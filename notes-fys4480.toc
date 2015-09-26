@@ -1,0 +1,51 @@
+\contentsline {chapter}{\numberline {1}Fundamental formalism}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Many-particle systems}{2}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Hilbert space and Hamiltonian}{2}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}More on the space $X$, and finite dimensional spaces}{3}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.3}The manybody Hamiltonian}{4}{subsection.1.1.3}
+\contentsline {subsection}{\numberline {1.1.4}Separation of variables}{4}{subsection.1.1.4}
+\contentsline {subsection}{\numberline {1.1.5}Permutations}{5}{subsection.1.1.5}
+\contentsline {subsection}{\numberline {1.1.6}Particle statistics}{5}{subsection.1.1.6}
+\contentsline {subsection}{\numberline {1.1.7}Slater determinants}{7}{subsection.1.1.7}
+\contentsline {section}{\numberline {1.2}Second quantization}{11}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}The creation and annihilation operators}{11}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Anticommutator relations}{13}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Occupation number representation}{14}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Spin orbitals and orbital diagrams}{15}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Fock space}{17}{subsection.1.2.5}
+\contentsline {subsection}{\numberline {1.2.6}Truncated bases}{18}{subsection.1.2.6}
+\contentsline {section}{\numberline {1.3}Representation of operators}{20}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}What we will prove}{20}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}One-body operators}{21}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Two-body operators}{22}{subsection.1.3.3}
+\contentsline {section}{\numberline {1.4}Wick's Theorem}{25}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}A sort of summary and motivation}{25}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Vacuum expectation values}{28}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.3}Normal ordering and contractions}{28}{subsection.1.4.3}
+\contentsline {subsection}{\numberline {1.4.4}Statement of Wick's Theorem}{31}{subsection.1.4.4}
+\contentsline {subsection}{\numberline {1.4.5}Vacuum expectation values using Wick's Theorem}{31}{subsection.1.4.5}
+\contentsline {subsection}{\numberline {1.4.6}Proof of Wick's Theorem}{32}{subsection.1.4.6}
+\contentsline {subsection}{\numberline {1.4.7}Using Wick's Theorem}{35}{subsection.1.4.7}
+\contentsline {section}{\numberline {1.5}Particle-hole formalism}{35}{section.1.5}
+\contentsline {section}{\numberline {1.6}Operators on normal-order form}{38}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}The number operator}{38}{subsection.1.6.1}
+\contentsline {subsection}{\numberline {1.6.2}One-body operators}{39}{subsection.1.6.2}
+\contentsline {subsection}{\numberline {1.6.3}Two-body operators}{39}{subsection.1.6.3}
+\contentsline {subsection}{\numberline {1.6.4}Normal-ordered two-body Hamiltonian}{40}{subsection.1.6.4}
+\contentsline {subsection}{\numberline {1.6.5}Full expressions for the normal-ordered Hamiltonian}{41}{subsection.1.6.5}
+\contentsline {chapter}{\numberline {2}The Standard Methods of approximation}{43}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{43}{section.2.1}
+\contentsline {section}{\numberline {2.2}The variational principle}{43}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}The Cauchy interlace theorem and linear models}{46}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}The Configuration-interaction method (CI)}{47}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}General description}{47}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Matrix elements of the CI method}{49}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Computer implementation of CI methods}{50}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Naive CI}{50}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Direct CI}{50}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.6}Recipe for bit pattern representation.}{51}{subsection.2.3.6}
+\contentsline {section}{\numberline {2.4}Hartree--Fock theory}{53}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}The Hartree--Fock equations in a given basis}{57}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Self-consistent field iteration}{58}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}The fluctuation potential}{59}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Normal-ordered Hamiltonian in HF basis}{60}{subsection.2.4.4}
