@@ -1,11 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.22)  26 SEP 2015 21:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.22)  28 SEP 2015 09:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**notes-fys4480.tex
+**\input notes-fys4480.tex
 (./notes-fys4480.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo
@@ -910,7 +908,17 @@ s.code.tex
 )
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
 brarydecorations.pathreplacing.code.tex)) (./newcommands.tex)
-No file notes-fys4480.aux.
+(./notes-fys4480.aux
+
+LaTeX Warning: Label `eq:fundanti' multiply defined.
+
+
+LaTeX Warning: Label `eq:even-vacuum-wick' multiply defined.
+
+
+LaTeX Warning: Label `eq:noncan-hf' multiply defined.
+
+)
 \openout1 = `notes-fys4480.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -929,7 +937,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 58.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 58.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 58.
@@ -984,6 +992,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 58.
 LaTeX Info: Redefining \pageref on input line 58.
 LaTeX Info: Redefining \nameref on input line 58.
+
+(./notes-fys4480.out) (./notes-fys4480.out)
 \@outlinefile=\write4
 \openout4 = `notes-fys4480.out'.
 
@@ -1044,114 +1054,63 @@ LaTeX Font Info:    Font shape `OT1/MinionPro-LF/bx/n' in size <24.88> not avai
 lable
 (Font)              Font shape `OT1/MinionPro-LF/b/n' tried instead on input li
 ne 61.
-\tf@toc=\write5
-\openout5 = `notes-fys4480.toc'.
-
+ (./notes-fys4480.toc
+LaTeX Font Info:    Font shape `OT1/MinionPro-LF/bx/n' in size <10> not availab
+le
+(Font)              Font shape `OT1/MinionPro-LF/b/n' tried instead on input li
+ne 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.63 \chapter
-             {Fundamental formalism} [1
+l.38 ...he variational principle}{43}{section.2.2}
+                                                   [1
 
-]
+])
+\tf@toc=\write5
+\openout5 = `notes-fys4480.toc'.
+
+ [2]
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/MinionPro-LF/bx/n' in size <20.74> not avai
 lable
 (Font)              Font shape `OT1/MinionPro-LF/b/n' tried instead on input li
 ne 63.
-LaTeX Font Info:    Font shape `OT1/MinionPro-LF/bx/n' in size <10> not availab
-le
-(Font)              Font shape `OT1/MinionPro-LF/b/n' tried instead on input li
-ne 65.
-
-LaTeX Warning: Citation `Raimes' on page 2 undefined on input line 65.
-
-
-LaTeX Warning: Citation `GRH' on page 2 undefined on input line 66.
-
-
-LaTeX Warning: Citation `SzaboOstlund' on page 2 undefined on input line 67.
-
 LaTeX Font Info:    Font shape `OT1/MinionPro-LF/bx/n' in size <14.4> not avail
 able
 (Font)              Font shape `OT1/MinionPro-LF/b/n' tried instead on input li
-ne 83.
+ne 84.
 LaTeX Font Info:    Font shape `OT1/MinionPro-LF/bx/n' in size <12> not availab
 le
 (Font)              Font shape `OT1/MinionPro-LF/b/n' tried instead on input li
-ne 85.
-LaTeX Font Info:    Try loading font information for U+msb on input line 106.
+ne 86.
+LaTeX Font Info:    Try loading font information for U+msb on input line 107.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Font shape `OT1/MinionPro-LF/bx/n' in size <8> not availabl
-e
-(Font)              Font shape `OT1/MinionPro-LF/b/n' tried instead on input li
-ne 106.
-
-
-LaTeX Warning: Citation `Leinaas1977' on page 2 undefined on input line 106.
-
-[2
+) [3
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 187.
+(hyperref)                removing `math shift' on input line 188.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 187.
+(hyperref)                removing `math shift' on input line 188.
 
-[3] [4]
-
-LaTeX Warning: Citation `Leinaas1977' on page 5 undefined on input line 342.
-
-
-LaTeX Warning: Citation `GRH' on page 5 undefined on input line 351.
-
-[5] [6]
-
-LaTeX Warning: Reference `eq:tensor' on page 7 undefined on input line 457.
-
-[7]
-
-LaTeX Warning: Reference `eq:slater' on page 8 undefined on input line 594.
-
-[8]
-
-LaTeX Warning: Reference `eq:slater' on page 9 undefined on input line 671.
-
-[9]
+[4] [5] [6] [7] [8] [9] [10]
 LaTeX Font Info:    Try loading font information for TS1+MinionPro-LF on input 
-line 773.
- (/usr/local/texlive/texmf-local/tex/latex/MinionPro/TS1MinionPro-LF.fd
+line 771.
+
+(/usr/local/texlive/texmf-local/tex/latex/MinionPro/TS1MinionPro-LF.fd
 File: TS1MinionPro-LF.fd 2005/01/23 v2.0 font definitions for TS1/MinionPro-LF.
 
 
 (/usr/local/texlive/texmf-local/tex/latex/MinionPro/MinionPro-FontDef.sty
 File: MinionPro-FontDef.sty 2007/02/01 v2.2 font definition macros
 ))
-[10]
-
-LaTeX Warning: Reference `eq:slater' on page 11 undefined on input line 837.
-
-[11]
-
-LaTeX Warning: Reference `eq:slater' on page 12 undefined on input line 896.
-
-[12]
-
-LaTeX Warning: Reference `eq:fundanti' on page 13 undefined on input line 953.
-
-[13]
-
-LaTeX Warning: Reference `eq:fundanti' on page 14 undefined on input line 1038.
-
-
-
-Overfull \hbox (0.95209pt too wide) in paragraph at lines 1076--1079
+[11] [12] [13] [14]
+Overfull \hbox (0.95209pt too wide) in paragraph at lines 1074--1077
 []\OT1/MinionPro-LF/m/n/10 Thus, the Slater de-ter-mi-nant $[] \U/MnSymbolD/m/n
 /10 ^^@ []$ \OT1/MinionPro-LF/m/n/10 can be rep-re-sented by the sub-set $\OMX/
 MnSymbolE/m/n/10 ò\OML/MinionPro-TOsF/m/it/10 ^^V[]; ^^V[]; ^^V[]\OMX/MnSymbolE
@@ -1161,339 +1120,120 @@ MnSymbolE/m/n/10 ò\OML/MinionPro-TOsF/m/it/10 ^^V[]; ^^V[]; ^^V[]\OMX/MnSymbolE
 /10 ,
  []
 
-[14] [15]
-
-LaTeX Warning: Reference `fig:orbitals' on page 16 undefined on input line 1256
-.
-
-[16] <orbitals.pdf, id=228, 77.10597pt x 155.42465pt>
+[15] [16] <orbitals.pdf, id=484, 77.10597pt x 155.42465pt>
 File: orbitals.pdf Graphic file (type pdf)
  <use orbitals.pdf>
-Package pdftex.def Info: orbitals.pdf used on input line 1271.
+Package pdftex.def Info: orbitals.pdf used on input line 1274.
 (pdftex.def)             Requested size: 77.10577pt x 155.42426pt.
 
+[17] [18 <./orbitals.pdf>] [19] [20]
 
-LaTeX Warning: Reference `exercise:occupation' on page 17 undefined on input li
-ne 1288.
-
-[17 <./orbitals.pdf>]
-
-LaTeX Warning: Reference `exercise:finite' on page 18 undefined on input line 1
-342.
-
-[18] [19]
-
-LaTeX Warning: Reference `eq:onebody-oper-rep' on page 20 undefined on input li
-ne 1476.
-
-
-LaTeX Warning: Citation `HarrisMonkhorstFreeman' on page 20 undefined on input 
-line 1525.
-
-[20]
-
-LaTeX Warning: Reference `eq:onebody-operator-rep' on page 21 undefined on inpu
-t line 1546.
-
-
-Overfull \hbox (6.31804pt too wide) in paragraph at lines 1591--1591
-[] 
- []
-
-
-Overfull \hbox (6.31804pt too wide) in paragraph at lines 1614--1614
-[] 
- []
-
-
-LaTeX Warning: Reference `eq:onebody-operator-rep' on page 21 undefined on inpu
-t line 1631.
+LaTeX Warning: Reference `eq:onebody-oper-rep' on page 21 undefined on input li
+ne 1493.
 
 [21]
-
-LaTeX Warning: Reference `eq:twobody-matelem' on page 22 undefined on input lin
-e 1645.
-
-
-LaTeX Warning: Reference `eq:0' on page 22 undefined on input line 1652.
+Overfull \hbox (6.31804pt too wide) in paragraph at lines 1607--1607
+[] 
+ []
 
 
-LaTeX Warning: Reference `eq:twobody-operator-rep' on page 22 undefined on inpu
-t line 1717.
-
-
-LaTeX Warning: Reference `eq:twobody-operator-rep-as' on page 22 undefined on i
-nput line 1722.
-
-
-LaTeX Warning: Reference `eq:twobody-matelem-as' on page 22 undefined on input 
-line 1723.
+Overfull \hbox (6.31804pt too wide) in paragraph at lines 1630--1630
+[] 
+ []
 
 [22]
 
-LaTeX Warning: Reference `exercise:diagonal-matrix-elements' on page 23 undefin
-ed on input line 1764.
+LaTeX Warning: Reference `lemma:replacement' on page 23 undefined on input line
+ 1691.
 
-[23]
-
-LaTeX Warning: Reference `fig:exercise-orbitals' on page 24 undefined on input 
-line 1813.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1876--1880
+[23] [24]
+Underfull \hbox (badness 10000) in paragraph at lines 1892--1896
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1880--1890
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 1896--1906
 
  []
 
-[24] [25]
+[26] [27] [28] [29] [30pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.1.4.1}) has been already used, duplicate ignored
 
-LaTeX Warning: Reference `eq:SE-matrix' on page 26 undefined on input line 1984
-.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2336 
+       pdfTeX warning (ext4): destination with the same identifier (name{equati
+on.1.4.2}) has been already used, duplicate ignored
 
-[26] [27]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2336 
+       pdfTeX warning (ext4): destination with the same identifier (name{equati
+on.1.4.3}) has been already used, duplicate ignored
 
-LaTeX Warning: Reference `eq:vacexp' on page 28 undefined on input line 2140.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2336 
+       ]
+Overfull \hbox (0.8798pt too wide) in paragraph at lines 2347--2353
+[]\OT1/MinionPro-LF/m/n/10 The def-i-ni-tion is re-cur-sive: each pair of con-t
+racted op-er-a-tors is pro-cessed in turn ac-cord-ing to Eq. [].
+ []
 
+[31pdfTeX warning (ext4): destination with the same identifier (name{equation.1
+.4.4}) has been already used, duplicate ignored
 
-LaTeX Warning: Reference `eq:anticommutator-relations' on page 28 undefined on 
-input line 2167.
-
-
-LaTeX Warning: Reference `eq:normal-ordering-def' on page 28 undefined on input
- line 2205.
-
-[28]
-
-LaTeX Warning: Reference `exercise:contraction-relation' on page 29 undefined o
-n input line 2236.
-
-
-LaTeX Warning: Reference `eq:contr-def' on page 29 undefined on input line 2261
-.
-
-[29]pdfTeX warning (ext4): destination with the same identifier (name{equation.
-1.4.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2296 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.1.4.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2301 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.1.4.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2306 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.1.4.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2311 \begin{equation}
-                       
-
-LaTeX Warning: Reference `eq:last-contraction-ex' on page 30 undefined on input
- line 2317.
-
-
-LaTeX Warning: Reference `eq:contraction-inside-normal-order-product' on page 3
-0 undefined on input line 2333.
-
-
-LaTeX Warning: Reference `eq:contr-def-2' on page 30 undefined on input line 23
-60.
-
-
-LaTeX Warning: Reference `eq:contr-def' on page 30 undefined on input line 2360
-.
-
-[30]
-
-LaTeX Warning: Reference `eq:even-vacuum-wick' on page 31 undefined on input li
-ne 2465.
-
-[31]
-
-LaTeX Warning: Reference `eq:wick-statement' on page 32 undefined on input line
- 2538.
-
-[32]
-
-LaTeX Warning: Reference `eq:lemma-statement' on page 33 undefined on input lin
-e 2585.
-
-
-LaTeX Warning: Reference `lemma:lemma-for-wick' on page 33 undefined on input l
-ine 2608.
-
-
-LaTeX Warning: Reference `eq:l1' on page 33 undefined on input line 2639.
-
-[33]
-
-LaTeX Warning: Reference `eq:l1' on page 34 undefined on input line 2672.
-
-
-LaTeX Warning: Reference `eq:wick-statement' on page 34 undefined on input line
- 2683.
-
-
-LaTeX Warning: Reference `lemma:wick2' on page 34 undefined on input line 2700.
-
-
-[34]
-
-LaTeX Warning: Reference `exercise:slater-condon-rules' on page 35 undefined on
- input line 2796.
-
-[35] [36]
-
-LaTeX Warning: Reference `eq:excit-commut' on page 37 undefined on input line 3
-002.
-
-
-LaTeX Warning: Reference `eq:quasi-wick-example' on page 37 undefined on input 
-line 3016.
-
-[37] [38] [39] [40]
-
-LaTeX Warning: Reference `eq:G2qp-pre' on page 41 undefined on input line 3340.
-
-
-
-LaTeX Warning: Reference `eq:G2qp-final' on page 41 undefined on input line 334
-0.
-
-
-LaTeX Warning: Reference `eq:G2qp-final' on page 41 undefined on input line 334
-3.
-
-[41] [42]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2451 \end{equation}
+                     ] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41]
+[42]
 Chapter 2.
-
-LaTeX Warning: Reference `eq:spectral-decomp' on page 43 undefined on input lin
-e 3522.
-
 [43
 
-] [44]
-
-LaTeX Warning: Reference `thm:rr' on page 45 undefined on input line 3735.
-
-
-LaTeX Warning: Reference `eq:spectral-decomp' on page 45 undefined on input lin
-e 3735.
-
-
-LaTeX Warning: Reference `thm:rr' on page 45 undefined on input line 3743.
-
-
-LaTeX Warning: Reference `thm:vp' on page 45 undefined on input line 3744.
-
-
-LaTeX Warning: Reference `eq:vp' on page 45 undefined on input line 3770.
-
-[45]
-
-LaTeX Warning: Reference `fig:hydrogen' on page 46 undefined on input line 3819
-.
-
-<hydrogen-gaussian-crop.pdf, id=593, 462.72874pt x 371.3875pt>
+] [44] [45] <hydrogen-gaussian-crop.pdf, id=875, 462.72874pt x 371.3875pt>
 File: hydrogen-gaussian-crop.pdf Graphic file (type pdf)
 
 <use hydrogen-gaussian-crop.pdf>
-Package pdftex.def Info: hydrogen-gaussian-crop.pdf used on input line 3824.
+Package pdftex.def Info: hydrogen-gaussian-crop.pdf used on input line 3840.
 (pdftex.def)             Requested size: 170.71652pt x 137.0202pt.
- [46 <./hydrogen-gaussian-crop.pdf>]
+ [46 <./hydrogen-gaussian-crop.pdf>] [47]
 
-LaTeX Warning: Reference `eq:matrix-expt' on page 47 undefined on input line 39
-11.
+LaTeX Warning: Reference `sec:hf' on page 48 undefined on input line 4044.
 
-[47]
-
-LaTeX Warning: Reference `sec:hf' on page 48 undefined on input line 4028.
-
-[48]
-
-LaTeX Warning: Reference `fig:fermi' on page 49 undefined on input line 4068.
-
-[49]
+[48] [49]
 
 LaTeX Warning: Reference `exercise:slater-condon--rules' on page 50 undefined o
-n input line 4280.
+n input line 4296.
 
 [50]
-
-LaTeX Warning: Citation `HJO' on page 51 undefined on input line 4393.
-
-
-Overfull \hbox (5.70209pt too wide) in paragraph at lines 4400--4404
+Overfull \hbox (5.70209pt too wide) in paragraph at lines 4416--4420
 []\OT1/MinionPro-LF/m/n/10 Each Slater de-ter-mi-nant $[]$ is, via the oc-cu-pa
 -tion num-bers, mapps to the bit pat-tern $[]$
  []
 
-[51]
-
-LaTeX Warning: Reference `ex:ci1' on page 52 undefined on input line 4478.
-
-[52]
-
-LaTeX Warning: Reference `ex:ci1' on page 53 undefined on input line 4484.
-
-
-LaTeX Warning: Reference `ex:ci2' on page 53 undefined on input line 4484.
-
-
-Overfull \hbox (0.80731pt too wide) in paragraph at lines 4494--4499
+[51] [52]
+Overfull \hbox (0.80731pt too wide) in paragraph at lines 4510--4515
 \OT1/MinionPro-LF/m/n/10 One of the ear-li-est and most suc-cess-ful ap-prox-i-
 ma-tion meth-ods for many-fermion sys-tems was the \OT1/MinionPro-LF/m/it/10 Ha
 rtree--
  []
 
 
-Overfull \hbox (53.89735pt too wide) in paragraph at lines 4500--4502
+Overfull \hbox (53.89735pt too wide) in paragraph at lines 4516--4518
 []\OT1/MinionPro-LF/m/n/10 Suggested read-ing for this sec-tion: Sz-abo/Ostlund
  Ch. 13, Har-ris/Monkhorst/Freeman Ch. 3, Gross/Runge/Heinonen
  []
 
-
-LaTeX Warning: Reference `exercise:slater-condon-rules' on page 53 undefined on
- input line 4537.
-
-
-LaTeX Warning: Reference `eq:hf-energy' on page 53 undefined on input line 4545
-.
-
 [53]
-
-LaTeX Warning: Reference `eq:hf-can' on page 54 undefined on input line 4632.
-
-
-LaTeX Warning: Reference `eq:fock-op' on page 54 undefined on input line 4634.
-
-
-LaTeX Warning: Reference `eq:hf-lagrangian' on page 54 undefined on input line 
-4645.
-
-
-Overfull \hbox (16.67543pt too wide) detected at line 4676
+Overfull \hbox (16.67543pt too wide) detected at line 4692
 \OML/MinionPro-TOsF/m/it/10 f[]\OMX/MnSymbolE/m/n/10 à\T1/MinionPro-LF/m/n/10 0
 \OMX/MnSymbolE/m/n/10 ç \U/MnSymbolD/m/n/10 ^^@ [] [] \U/MnSymbolC/m/n/10 ^^T [
 ] [] [] ^^P [] \OML/MinionPro-TOsF/m/it/10 ^^U[] [] :
  []
 
 [54]
-
-LaTeX Warning: Reference `eq:noncan-hf' on page 55 undefined on input line 4715
-.
-
-
-Overfull \hbox (6.89032pt too wide) in paragraph at lines 4754--4759
+Overfull \hbox (6.89032pt too wide) in paragraph at lines 4770--4775
 \OT1/MinionPro-LF/m/n/10 Thus, $[]$ is a \OT1/MinionPro-LF/m/it/10 lo-cal po-te
 n-tial\OT1/MinionPro-LF/m/n/10 , given by a sort of av-er-age of $\OML/MinionPr
 o-TOsF/m/it/10 w\OMX/MnSymbolE/m/n/10 à\OML/MinionPro-TOsF/m/it/10 x[]; x[]\OMX
@@ -1505,78 +1245,38 @@ ymbolD/m/n/10 ^^A [][] \OMX/MnSymbolE/m/n/10 S\OML/MinionPro-TOsF/m/it/10 ^^^[]
 \OT1/MinionPro-LF/m/n/10 ,
  []
 
-[55]
+[55] [56] [57] [58] [59] [60] (./notes-fys4480.bbl [61]
+(/usr/local/texlive/2014/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)) [62
 
-LaTeX Warning: Reference `eq:noncan-hf' on page 56 undefined on input line 4789
-.
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5222.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5222.
 
+(./notes-fys4480.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5222.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5222.
 
-LaTeX Warning: Reference `eq:hf-can' on page 56 undefined on input line 4791.
+Package rerunfilecheck Info: File `notes-fys4480.out' has not changed.
+(rerunfilecheck)             Checksum: 178F3E13DBB298131D6E79F2A1D56F20;3992.
 
-
-LaTeX Warning: Reference `eq:hf-energy' on page 56 undefined on input line 4852
-.
-
-[56]
-
-LaTeX Warning: Reference `eq:hf-can' on page 57 undefined on input line 4874.
-
-
-LaTeX Warning: Reference `eq:hf-can-all' on page 57 undefined on input line 490
-1.
-
-[57]
-
-LaTeX Warning: Reference `eq:hf-can-matrix' on page 58 undefined on input line 
-4952.
-
-
-LaTeX Warning: Citation `HJO' on page 58 undefined on input line 4978.
-
-[58]
-
-LaTeX Warning: Reference `eq:antisymm-elems-hf-inter' on page 59 undefined on i
-nput line 5060.
-
-[59]
-
-LaTeX Warning: Reference `exercise:slater-condon-rules' on page 60 undefined on
- input line 5113.
-
-[60]
-No file notes-fys4480.bbl.
-[61]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5206.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5206.
- (./notes-fys4480.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5206.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5206.
-
-
-
-Package rerunfilecheck Warning: File `notes-fys4480.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `notes-fys4480.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  178F3E13DBB298131D6E79F2A1D56F20;3992.
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5206.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5222.
  ) 
 Here is how much of TeX's memory you used:
- 21810 strings out of 493117
- 408516 string characters out of 6135432
- 531738 words of memory out of 5000000
- 24207 multiletter control sequences out of 15000+600000
- 347168 words of font info for 212 fonts, out of 8000000 for 9000
+ 22367 strings out of 493117
+ 414667 string characters out of 6135432
+ 537161 words of memory out of 5000000
+ 24745 multiletter control sequences out of 15000+600000
+ 342508 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,27n,65p,502b,887s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,27n,65p,509b,886s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/texmf-local/fonts/enc/dvips/MinionPro/a_6s5spt.enc}{/usr/
 local/texlive/2014/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolS.enc}{/usr/loca
 l/texlive/texmf-local/fonts/enc/dvips/MinionPro/a_aycidu.enc}{/usr/local/texliv
@@ -1605,10 +1305,10 @@ live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texl
 ive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/
 texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/loc
 al/texlive/2014/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on notes-fys4480.pdf (62 pages, 620462 bytes).
+Output written on notes-fys4480.pdf (63 pages, 634039 bytes).
 PDF statistics:
- 1022 PDF objects out of 1200 (max. 8388607)
- 928 compressed objects within 10 object streams
- 548 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1320 PDF objects out of 1440 (max. 8388607)
+ 1222 compressed objects within 13 object streams
+ 556 named destinations out of 1000 (max. 500000)
+ 431 words of extra memory for PDF output out of 10000 (max. 10000000)
 
