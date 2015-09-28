@@ -68,14 +68,15 @@ of Szabo/Ostlund \cite{SzaboOstlund} contains a nice refresher on
 mathematical topics, including linear algebra.
 
 
-Disclaimer: This course is not a mathematics course, so some mathematical details
-are glossed over. Examples include the fact that the Hamiltonian is
-rarely a bounded operator, such that there exists $\Psi$ such that
-$\hat{H}\Psi$ does not make sense in Hilbert space. Often, operators
-have complicated spectra, including continuous parts. For points in
-the continuous spectrum, no square-integrable eigenfunction exists. As is usual, we
-ignore this complication, and basically calculate as if everything
-were matrices of finite dimension.
+Disclaimer: This course is not a mathematics course, so some
+mathematical details are glossed over. Examples include the fact that
+the Hamiltonian is rarely a bounded operator, such that there exists
+$\Psi$ such that $\hat{H}\Psi$ does not make sense in Hilbert
+space. Often, operators have complicated spectra, including continuous
+parts. For points in the continuous spectrum, no square-integrable
+eigenfunction exists. As is usual, we ignore this complication, and
+basically calculate as if everything were matrices of finite
+dimension.
 
 
 
@@ -114,13 +115,13 @@ Example: The configuration space for an electron is $\RR^3 \times
 where $s_z$ is the projection of the electron spin along some
 axis. The one-electron wavefunction can thus be considered a
 \emph{two-component} wavefunction. The $N$-electron wavefunction is thus a function of $N$
-coordinats $\vec{r}_i$ and $N$ spin variables $s_{z,i}$, in total
+coordinates $\vec{r}_i$ and $N$ spin variables $s_{z,i}$, in total
 $2^N$ components.
 
 Example: A nucleon has two discrete degrees of freedom: spin and
 isospin. Thus, $X = \RR^3 \times \{-\tfrac{1}{2},+\tfrac{1}{2}\}
 \times \{-\tfrac{1}{2},+\tfrac{1}{2}\}$, $x = (\vec{r},s_z,i_z)$. A
-single nonrelativistic nucleon thus have a four-component
+single nonrelativistic nucleon thus has a four-component
 wavefunction, and $N$ nucleons $4^N$ components.
  
 
@@ -160,7 +161,7 @@ time-dependent Schr\"odinger equation (TDSE):
 \end{equation}
 The system Hamiltonian $\hat{H}$ is obtained from its classical
 counterpart (if such exists) by a procedure called \emph{Weyl
-  quantization} [Add reference!]. If $\hat{H}$ does not explicitly depend on time, the
+  quantization} \note{Add reference}. If $\hat{H}$ does not explicitly depend on time, the
 TDSE can be ``solved'' by instead considering the time-independent
 Schr\"odinger equation (TISE),
 \begin{equation}
@@ -222,7 +223,8 @@ two-body operator that acts only on the degrees of freedom of the
 Of course, one could consider three-body forces as well, and even
 higher. Such occur in nuclear physics.
 
-Let us take the Hamiltonian of an atom in the Born--Oppenheimer as an example.
+Let us take the Hamiltonian of an atom in the Born--Oppenheimer
+approximation as an example.
 
 The Hamiltonian for a free electron is just its kinetic energy,
 \begin{equation}
@@ -237,20 +239,20 @@ obtain the total single-particle Hamiltonian
   -\frac{\hbar^2}{2m_e}\nabla^2   - \frac{Ze^2}{\|\vec{R}-\vec{r}\|}.
 \end{equation}
 The Hamiltonian for a system of $N$ electrons, neglecting
-interactions, becomes
+inter-electronic interactions, becomes
 \begin{equation}
   \hat{H}_0 = \sum_{i=1}^N \hat{h}(i) = \sum_{i=1}^N
   \left[-\frac{\hbar^2}{2m_e} \nabla_i^2 -\frac{Ze^2}{|\vec{r}_i - \vec{R}|}\right].
 \end{equation}
 
-The electron pair $(i,j)$ interact via the Coulomb force:
+The electron pair $(i,j)$ interacts via the Coulomb force:
 \begin{equation}
   w(i,j) = \frac{e^2}{|\vec{r}_i - \vec{r}_j|}.
 \end{equation}
 Thus,
 \begin{equation}
-  \hat{W} = \frac{1}{2}\sum_{\substack{i,j=1\\i\neq j}} w(i,j) =
-  \frac{1}{2}\sum_{\substack{i,j=1\\i\neq j}} \frac{e^2}{|\vec{r}_i -
+  \hat{W} = \frac{1}{2}\sum_{\substack{i,j=1\\i\neq j}}^N w(i,j) =
+  \frac{1}{2}\sum_{\substack{i,j=1\\i\neq j}}^N \frac{e^2}{|\vec{r}_i -
     \vec{r}_j|}.
 \end{equation}
 
@@ -300,12 +302,12 @@ paragraphhs here.
 \subsection{Particle statistics}
 
 
-Our particles are identical, or indistingiushable. There is abundant
-evidence that all elementary particls must be treated as such. That
-means that our probability density must be \emph{permutation invariant} in
-the following sense: let $\sigma \in S_N$ be a permutation of $N$
-indices, and let $(x_1,\cdots,x_N)\in X^N$ be a configuration of the
-$N$ particles. Then we must have
+Our particles are identical, or indistinguishable. There is abundant
+evidence that all elementary particles must be treated as such. That
+means that our probability density must be \emph{permutation
+  invariant} in the following sense: let $\sigma \in S_N$ be a
+permutation of $N$ indices, and let $(x_1,\cdots,x_N)\in X^N$ be a
+configuration of the $N$ particles. Then we must have
 \begin{equation}
   |\Psi(x_1,x_2,\cdots,x_N)|^2 = |\Psi(x_{\sigma(1)}, x_{\sigma(2)},\cdots,
   x_{\sigma(N)})|^2.
@@ -336,11 +338,11 @@ former case, $\Psi$ is ``totally symmetric with respect to
 permutations'', and in the latter case, ``totally anti-symmetric''.
 
 It is a \emph{postulate} that particles occuring in quantum theory (in
-three-dimensional space) is of one of two types: bosons or
+three-dimensional space) are of one of two types: bosons or
 fermions. Bosons have totally symmetric wavefunctions only, and
 fermions have totally anti-symmetric wavefunctions only. To cite
 Leinaas and Myrheim \cite{Leinaas1977}, ``The physical consequences of
-this postulate seems to be in good agreement with experimental data.''
+this postulate seem to be in good agreement with experimental data.''
 Wolfgang Pauli proved (using relativistic considerations) that
 wavefunctions of half-integral \emph{spin} must be anti-symmetric, and
 wavefunctions of particles with integral spin must be symmetric,
@@ -406,9 +408,10 @@ In this course, we focus on fermions. See, e.g.,
   \end{enumerate}
   Answer the following questions, per function:
 
-  Is the function totally symmetric?
+  Is the function totally symmetric with respect to particle permutations?
 
-  Is the function totally antisymmetric?
+  Is the function totally antisymmetric with respect to particle
+  permutations? 
 
   Is the function square integrable?
   
@@ -477,7 +480,7 @@ the set of eigenfunctions $\psi_i\in L^2(X)$ of $\hat{h}$ is complete,
 our separation of variables eigenfunctions $\Psi =
 \psi_1\psi_2\cdots\psi_N$ form a complete set too.
 
-Anoter remark: For arbitrary $N$, the tensor product basis described
+Another remark: For arbitrary $N$, the tensor product basis described
 \emph{can be counted}. For arbitrary $N$, let us introduce a generic
 index, a multiindex, $k = (\mu_1,\cdots,\mu_N)$. There is
 a one-to-one mapping between multiindices and the natural
@@ -493,7 +496,7 @@ are all fundamentally equivalent, since the basis set can be counted.
 Important message so far: a single-particle basis set $\{\phi_\mu\}$
 can be used to construct a basis for $L^2(X^N)$.
 
-What about or ``actual'' Hilbert space, $L^2(X_N)_\text{AS}$? Can we
+What about or ``actual'' Hilbert space, $L^2(X^N)_\text{AS}$? Can we
 construct a basis for this using our single-particle basis? Yes, this
 is the role of \emph{Slater determinants}.
 
@@ -522,7 +525,7 @@ the linear combination
 each term representing a permutation of the indices $(123)$. There is
 nothing special about $(123)$ of course, $(\mu_1\mu_2\mu_3)$ also
 works. Note that if one of these indices are equal, then the whole
-linear combiation is zero as well.
+linear combniation is zero as well.
 
 The generalization to $N$ indices is in fact a \emph{determinant}, and
 we make a definition:
@@ -649,7 +652,7 @@ matrix determinants.
 
 
 Observation: Determinant properties imply that permutation of particle
-indicices gives sign change. Permutation of function indices gives
+indices gives sign change. Permutation of function indices gives
 sign change:
 \begin{equation}
   [\phi_1,\cdots,\phi_i,\cdots,\phi_j,\cdots,\phi_N] =
@@ -660,17 +663,12 @@ sign change:
   -[\phi_1,\cdots,\phi_N](x_1,\cdots,x_j,\cdots,x_i,\cdots,x_N). 
 \end{equation}
 
-Moreover, two rows equal means that two of the
-single-particle functions are identical, giving a vanishing
-determinant.
-
-So the \emph{set} $\{\mu_1,\mu_2,\cdots,\mu_N\}$ with $N$ elements determines the
-Slater determinant up to a sign change -- permuting the elements gives the \emph{same}
-determinant.
-
+Moreover, two equal rows (i.e., equal function indices) means that two
+of the single-particle functions are identical, giving a vanishing
+determinant. 
 If two \emph{columns} in Eq.~\eqref{eq:slater} are identical, the
 determinant vanishes. Two columns equal mean that we evaluate at some
-$x_i = x_j$, giving a vanishing determinant. \emph{This is the Pauli
+$x_i = x_j$. \emph{This is the Pauli
   exclusion principle.} 
 
 \begin{theorem}
@@ -682,7 +680,7 @@ $x_i = x_j$, giving a vanishing determinant. \emph{This is the Pauli
   \end{equation}
   Moreover, if we choose an ordering of the indices $\mu$, the Slater
   determinants satisfying $\mu_1<\mu_2<\cdots<\mu_N$ form an
-  orthonormal Basis for $L^2(X^N)_\text{AS}$.
+  orthonormal basis for $L^2(X^N)_\text{AS}$.
 \end{theorem}
 \begin{proof}
 Step 1: Expand $\Psi$ in the tensor product basis.
@@ -691,7 +689,7 @@ Step 1: Expand $\Psi$ in the tensor product basis.
   \tilde{\Phi}_{\mu_1,\cdots,\mu_N}(x_1,\cdots,x_N).
 \end{equation}
 Step 2: Show that the coefficients $c_{\vec{\mu}}$ are antisymmetric
-under permutation. For simplicity, consier a transposition of $i$ with
+under permutation. For simplicity, consider a transposition of $i$ with
 $j$, $i<j$:
 \begin{equation}
   \begin{split}
@@ -740,11 +738,11 @@ permutations of these. We now get
     [\phi_{\mu_1},\cdots,\phi_{\mu_N}].
   \end{split}
 \end{equation}
-This in facts proves that the Slater determinants, when we only use
+This in fact proves that the Slater determinants, when we only use
 ordered indices, are sufficient to expand any $\Psi
 L^2(X^N)_\text{AS}$. Clearly, if we omit one such Slater determinant,
 not all $\Psi$ can be expanded. (In particular, this omitted Slater
-determinant cannot be expanded in the rest!) This, the Slater
+determinant cannot be expanded in the rest!) Thus, the Slater
 determinants with ordered indices form a basis.
 \end{proof}
 
@@ -791,7 +789,7 @@ with fermion spaces. We also introduce the bra/ket notation for
 wavefunctions. 
 
 Recall that a basis for $L^2_N$ could be formed from an orthonormal
-basis $\{\phi_\mu\}$ of $L^2(X)$, by computing  set of Slater
+basis $\{\phi_\mu\}$ of $L^2(X)$, by computing a set of Slater
 determinants $\Phi_{\mu_1,\cdots,\mu_N} = [\phi_{\mu_1},\cdots,\phi_{\mu_N}]$, where
 $\mu_1<\mu_2<\cdots<\mu_N$ were \emph{ordered}. (If we permute the
 index set, we get the same function with a possible sign change, so it
@@ -804,7 +802,7 @@ is useful. We therefore introduce the ket notation
   \ket{\psi_1,\cdots,\psi_N} = [\psi_1,\cdots,\psi_N]
 \end{equation}
 for an arbitrary Slater determinant. When $\{\phi_\mu\}$ is a
-Single-particle basis, we may choose to suppress all the $\phi$'s
+single-particle basis, we may choose to suppress all the $\phi$'s
 everywhere, and write
 \begin{equation}
   \ket{\vec{\mu}} = \ket{\mu_1\mu_2\cdots\mu_N}, \quad
@@ -897,7 +895,7 @@ In terms of determinant coordinate expressions as in Eq.~\eqref{eq:slater}, $c^\
 column on the far right with $x_{N+1}$ and inserts a row on the top
 with the index $\nu$. Finally, the whole expression is renormalized.
 
-[Recall that the basis determinants were the determinants that had
+[Recall that the basis Slater determinants were the determinants that had
 \emph{ordered indices}. Assume that $\vec{\mu}$ is ordered. Clearly,
 $c^\dag\ket{\vec{\nu}}$ is either zero or equal to
 $(-1)^j\ket{\mu_1\mu_2\cdots\mu_j\nu\mu_{j+1}\cdots \mu_N}$, which is
@@ -959,7 +957,7 @@ $\ket{\vec{\mu}} \in L^2_N$,
   c^\dag_{\nu_1} c^\dag_{\nu_2} \ket{\vec{\mu}} = -c^\dag_{\nu_2}
   c^\dag_{\nu_1} \ket{\vec{\mu}}.
 \end{equation}
-Why? The right hand side is obtained by exhanging the two first rows
+Why? The right hand side is obtained by exchanging the two first rows
 of the determinant on the left hand side.
 
 Since this equation holds for any basis vector, we have shown that the
@@ -968,7 +966,7 @@ two creation operators \emph{anticommute}
   \{ c^\dag_{\nu_1}, c^\dag_{\nu_2} \} \equiv c^\dag_{\nu_1}
   c^\dag_{\nu_2} + c^\dag_{\nu_2} c^\dag_{\nu_1} = 0.
 \end{equation}
-Simiarly, two annihilation operators anticommute,
+Similarly, two annihilation operators anticommute,
 \begin{equation}
   \{ c_{\nu_1}, c_{\nu_2} \} \equiv c_{\nu_1}
   c_{\nu_2} + c_{\nu_2} c_{\nu_1} = 0.
@@ -1005,7 +1003,7 @@ On the other hand,
   c_\nu c^\dag_\nu \ket{\vec{\mu}} = c_\nu \ket{\nu\vec{\mu}} = (-1)^0
   \ket{\vec{\mu}}.
 \end{equation}
-Case 1 can be summarised as
+Case 1 can be summarized as
 \begin{equation}
   \{ c_\nu, c^\dag_\nu\} = 1
 \end{equation}
@@ -1050,7 +1048,7 @@ the rearrangements give rise to the same Slater determinant, up to the
 sign of the permutation. If $\sigma\in S_N$ is the permutation that
 sorts $\vec{\mu}$ into $\vec{\nu} = \sigma(\vec{\mu})$, then
 \begin{equation}
-  \ket{\mu_1,\cdots,\vec{\mu_N}} = (-1)^{|\sigma|}
+  \ket{\mu_1,\cdots,\mu_N} = (-1)^{|\sigma|}
   \ket{\mu_{\sigma(1)},\cdots,\mu_{\sigma(N)}} = (-1)^{|\sigma|}
   \ket{\nu_1,\cdots,\nu_N}.
 \end{equation}
@@ -1139,7 +1137,7 @@ $\mu_j<\nu$. Thus $\#\nu$ counts the occupied single-particle functions ``before
     c^\dag_\nu \ket{ n_0 n_1 n_2 \cdots } = 
     \begin{cases}
       0 & \text{if $\nu$ is occupied} \\
-      (-1)^{\#\nu} \ket { n_1 n_1 n_2 \cdots n_{\nu-1} 0_\nu n_{\nu+1} \cdots} &
+      (-1)^{\#\nu} \ket { n_1 n_1 n_2 \cdots n_{\nu-1} 1_\nu n_{\nu+1} \cdots} &
       \text{if $\nu$ is unoccupied}
     \end{cases}
   \end{equation}
@@ -1147,7 +1145,7 @@ $\mu_j<\nu$. Thus $\#\nu$ counts the occupied single-particle functions ``before
     c_\nu \ket{ n_0 n_1 n_2 \cdots } = 
     \begin{cases}
       0 & \text{if $\nu$ is unoccupied} \\
-      (-1)^{\#\nu} \ket { n_1 n_1 n_2 \cdots n_{\nu-1} 1_\nu n_{\nu+1} \cdots} &
+      (-1)^{\#\nu} \ket { n_1 n_1 n_2 \cdots n_{\nu-1} 0_\nu n_{\nu+1} \cdots} &
       \text{if $\nu$ is occupied}
     \end{cases}
   \end{equation}
@@ -1160,7 +1158,7 @@ $\mu_j<\nu$. Thus $\#\nu$ counts the occupied single-particle functions ``before
   Consider the determinants $\ket{1,2,3}$, $\ket{1,3,2}$,
   $\ket{2,1,3}$, $\ket{3,2,1}$, $\ket{2,3,1}$ and $\ket{3,1,2}$.
 
-  a) Are there further Slater determinants that can be created using the
+  a) Are there further $N=3$ Slater determinants that can be created using the
   single-particle orbitals $\phi_i$, $i=1,2,3$ only?
 
   b) Write down a basis for the space spanned by the six determinants,
@@ -1247,7 +1245,12 @@ single-particle functions are doubly degenerate:
 Here, $\mu = (p,\alpha)$ is the combined space/spin quantum numbers. 
 
 In chemistry parlance, $\varphi_p(\vec{r})$ is an \emph{orbital},
-while $\phi_\mu(x)$ is a spin-orbital. 
+while $\phi_\mu(x)$ is a spin-orbital. Only the spin-orbital is a
+single-particle function in the sense that we use in this text, i.e.,
+a bona fide element in $L^2(X)$, the single-particle Hilbert
+space. The orbital is an element in $L^2(\RR^3)$ and must be adjoined
+with a spin basis function to become a single-particle function, a
+spin-orbital. 
 
 Each spin-orbital can be occupied by only one electron, but each
 orbital has room for two -- one spin up and one spin down. One
@@ -1294,13 +1297,14 @@ all $L^2_N$:
 \end{equation}
 By definition, $\braket{\vec{\mu}|\vec{\nu}} = 0$ if $\vec{\nu}$ and
 $\vec{\mu}$ have different number of particles, i.e., different number
-of occuped orbitals.
+of occupied single-particle functions.
 
 Thus
 \begin{equation}
-  \braket{001000\cdots|110001010\cdots} = 0
+  \braket{0_0 0_1 1_2 0_3 0_4 0_5 0000 \cdots|1_0 1_1 0_2 0_3 0_4 1_5 0000 \cdots} = 0
 \end{equation}
-for example.
+for example, since the number of particles differ in the two
+functions. 
 
 Now, $c^\dag_\mu : \mathscr{F} \to \mathscr{F}$ maps entirely inside
 $\mathscr{F}$, and similarly with $c_\mu$.
@@ -1354,10 +1358,11 @@ Thus, $\psi\in V_1$ means
 Having selected the finite basis, we obtain for different $N$ a Slater
 determinant basis, spanning $V_N \subset L^2(X^N)_\text{AS}$.
 
-Clearly, as we have only $L$ orbitals available, we cannot create more
-than $N$ particles from vacuum without getting at least one repeated
-creation operator, i.e., we must have $L \geq N$ to have nonzero
-dimension. The general dimension is $\dim(V_N) = \binom{L}{N}$.
+Clearly, as we have only $L$ single-particle functions available, we
+cannot create more than $N$ particles from vacuum without getting at
+least one repeated creation operator, i.e., we must have $L \geq N$ to
+have nonzero dimension. The general dimension is $\dim(V_N) =
+\binom{L}{N}$.
 
 In computational settings, the truncation of the inifite basis into a
 finite one is almost universally done. Of, course, we can only
@@ -1378,30 +1383,38 @@ example is the \emph{Hubbard model} from solid-state physics, see for example
 \url{https://en.wikipedia.org/wiki/Hubbard_model}. 
 
 
-\begin{exercise}\label{exercise:finite}
-  Let $\phi_\mu$, $\mu=1,2,\cdots,6$ be given orthonormal orbitals.
+\begin{exercise}\label{exercise:finite} [Note: This exercise has been
+  updated since it was given as a weekly exercise.]
 
-  a) Using the $\ket{\mu_1,\cdots,\mu_N}$ notation, write down a basis
+  Let $\phi_\mu$, $\mu=1,2,\cdots,6$ be given orthonormal
+  single-particle functions.
+
+  \begin{enumerate}
+    \item[a)]
+      Using the $\ket{\mu_1,\cdots,\mu_N}$ notation, write down a basis
   for the finite dimensional subspace of $L^2(X^N)_\text{AS}$ for
   $N=2$, $N=3$ and 
-  $N=4$, that you can construct using the given orbitals. (Make sure
+  $N=4$, that you can construct using the given single-particle funcitons. (Make sure
   you include only linearly independent Slater determinants.)
-
-  b) Can you construct a Slater determinant for $N=10$ particles using
+  \item[b)]
+  Can you construct a Slater determinant for $N=10$ particles using
   the given $\phi_\mu$?
 
-  c) Using the occupation number notation $\ket{n_1 n_2 \cdots n_6}$
+  \item[c)] Using the occupation number notation $\ket{n_1 n_2 \cdots n_6}$
   notation, write down a basis for the same spaces as in exercise a).
 
-  d) What is the dimension of the subspace of Fock space you can
-  create with the $6$ orbitals?
+  \item[c)] What is the dimension of the subspace of Fock space you can
+  create with the $6$ single-particle functions?
 
-  e) Assume that you have $L$ orbitals instead of just $6$. What is
+  \item[e)] Assume that you have $L$ orbitals instead of just $6$. What is
   the dimension of the $N$-particle spaces you can build? What is the
   dimension of the Fock space you can build?
+\end{enumerate}
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise}[Note: This exercise has been
+  updated since it was given as a weekly exercise.]
+
   Consider the following picture:
   \begin{center}
     \begin{tikzpicture}
@@ -1416,15 +1429,18 @@ example is the \emph{Hubbard model} from solid-state physics, see for example
   function $\phi_\mu$. The circle represents an occupied
   single-particle function, i.e., the Slater determinant $\ket{0}$.
 
-  a) Insopired by the above picture, draw a pictures of \emph{all} the distinct
-  Slater determinants you can create using the four single-particle
-  functions. Caption each picture with the corresponding
-  $\ket{\mu_1,\mu_2,\cdots}$.
+  \begin{enumerate}
+  \item[a)] In a similar fashion as the the above picture, draw a
+    pictures of \emph{all} the distinct Slater determinants you can
+    create using the four single-particle functions. Make sure you
+    consider all possible particle numbers. Caption each picture with
+    the corresponding $\ket{\mu_1\mu_2\cdots\mu_N}$.
+\end{enumerate}
 
-   We now consider electrons. Consider \emph{4 orbitals with spin}
-  $\varphi_p(\vec{r})$, i.e., $8$ spin-orbitals
-  $\phi_\mu(\vec{r},\sigma)$. The corresponding diagram for the Slater
-  determinant $\ket{0\uparrow,0\downarrow}$ is:
+We now consider electrons. Consider \emph{4 spin-orbitals}
+$\varphi_p(\vec{r})$, i.e., $8$ spin-orbitals
+$\phi_\mu(\vec{r},\sigma)$. The corresponding diagram for the Slater
+determinant $\ket{0\uparrow,0\downarrow}$ is:
   \begin{center}
     \begin{tikzpicture}
       \draw[thick] (0,0) -- (2,0) node[anchor=west] {$\varphi_0$};
@@ -1437,19 +1453,20 @@ example is the \emph{Hubbard model} from solid-state physics, see for example
   \end{center}
   Each level now can hold 2 electrons, spin up and spin down. 
 
-  b) Draw all possible $2$-electron Slater determinants. Mark those
-  that have total spin projection 0.
-
-  c) Consider the one-body operator given by
-  \[ \hat{H}_0 = \sum_{p} \epsilon_p (c^\dag_{p\uparrow} c_{p\uparrow}
+  \begin{enumerate}
+  \item[b)] Draw all possible $2$-electron Slater determinants. Mark those
+    that have total spin projection 0.
+  \item[c)] Consider the one-body operator given by
+    \[ \hat{H}_0 = \sum_{p} \epsilon_p (c^\dag_{p\uparrow} c_{p\uparrow}
   + c^\dag_{p\downarrow} c_{p\downarrow}). \]  
   Here, $\epsilon_p$ are numbers such that $\epsilon_1 < \epsilon_2 < \cdots$.
   In first quantization,
-  \[ \hat{H}_0 = \sum_{i=1}^N \hat{h}(i). \]
-  Write down the matrix of $\hat{h}$ in the basis $\phi_{p\sigma}$ and
-  find its eigenfunctions. Interpret the spin-orbital diagram in terms
-  of your results. Find the $N=2$ ground state of $\hat{H}_0$, and
-  draw a picture of it.
+  \[ \hat{H}_0 = \sum_{i=1}^N \hat{h}(i). \] Write down the matrix of
+  the (single-electron) operator $\hat{h}$ in the spin-orbital basis
+  $\{\phi_{p\sigma}\}$ and find its eigenfunctions. Interpret the
+  spin-orbital diagram in terms of your results. Find the $N=4$ ground
+  state of $\hat{H}_0$, and draw a picture of it.
+\end{enumerate}
 \end{exercise}
 
 \section{Representation of operators}
@@ -1525,7 +1542,7 @@ The proofs given in this section borrow heavily from
 \cite{HarrisMonkhorstFreeman}.
 
 
-\begin{lemma}
+\begin{lemma}\label{lemma:replacement}
   Let $\ket{\mu_1\mu_2\cdots\mu_N}$ be a Slater determinant built from
   orthonormal single-particle functions $\phi_\mu$, no
   particular ordering assumed. The
@@ -1543,11 +1560,10 @@ The proofs given in this section borrow heavily from
 
 \subsection{One-body operators}
 
-We prove Eq.~\eqref{eq:onebody-operator-rep} by showing that their
-action on a basis of Slater determinants agree. Let therefore
+We prove Eq.~\eqref{eq:onebody-operator-rep} by showing that the
+actions of the left- and right-hand sides on an arbitrary Slater
+determinant agree. Let therefore
 $\{\phi_\mu\}$ be a single-particle basis as usual.
-
-
 
 
 Consider the action of $\hat{H}_0 = \sum_i \hat{h}(i)$ on an arbitrary
@@ -1570,7 +1586,7 @@ Here, we used that $\hat{P}_\sigma$ commutes with $\hat{H}_0$.
 Consider the operator $\hat{h}$ acting on a single-particle
 function $\phi_\mu$. The result, $\psi$, can be expanded in the basis:
 \begin{equation}
-  \psi(x) = \hat{h}\phi_\mu(x) = \sum_\nu \phi_\nu
+  \psi(x) = \hat{h}\phi_\mu(x) = \sum_\nu \phi_\nu(x)
   \braket{\nu|\hat{h}|\mu}.
 \end{equation}
 We insert this expansion:
@@ -1672,7 +1688,7 @@ and we get, using Eq.~\eqref{eq:0},
     c_{\mu_j}c_{\mu_i}\ket{\phi_{\mu_1}\cdots\phi_{\mu_N}}.
   \end{split}
 \end{equation}
-Here, we used the Lemma about replacement behaviour of the $c^\dag
+Here, we used Lemma~\ref{lemma:replacement} about replacement behaviour of the $c^\dag
 c^\dag c c$ product. We are currently summing over $\mu_i$ and
 $\mu_j$, such that $i<j$. Including $i=j$ gives zero contribution
 (why?), and including $j>i$ gives equal contribution:
