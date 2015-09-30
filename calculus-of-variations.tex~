@@ -1,0 +1,125 @@
+\section{Calculus of variations}
+
+\subsection{Functionals}
+
+The variational procedure entails computing the extrema of a nonlinear
+\emph{function of a function}. Such objects are often called
+\emph{functionals}. A functional $F[u]$ takes some \emph{function}
+$u$ and produces a \emph{number}. One can think of $F$ depending on
+infinitude of function values $u(x)$. In the case of the energy expectation
+value, the $N$-body wavefunction $\ket{\Psi}$ is mapped to the number
+\[ \mathcal{E}[\ket{\Psi}] =
+\braket{\Psi|\hat{H}|\Psi}/\braket{\Psi|\Psi}. \] 
+Suppose we expand the wavefunction in a basis, say, a Slater
+determinant basis,
+\[ \ket{\Psi} = \sum_I A_I \ket{\Phi_I}.\]
+Then, $\mathcal{E}$ becomes a function of the vector $\vec{A}$, a
+possibly finite set of coefficients. This may be an easier way to
+think of a functional: a function that depends on $K$ variables, where
+$K$ may be infinite.
+
+A functional can
+also depend on more than one function. In Hartree--Fock theory, the
+energy functional depends on $N$ single-particle functions $\phi_i$,
+$i=1,\cdots,N$. Moreover, the Hartree--Fock Lagrangian function that
+we \emph{actually} optimize also depends on a matrix
+$\lambda=[\lambda_{ij}]$ of Lagrange multipliers, $\mathcal{L} =
+\mathcal{L}[\phi_1,\cdots,\phi_N,\lambda]$. Given expansions of the
+$\phi_i$ as $\phi_i(x) = \sum_p \chi_p(x) U_{ip}$, we see that
+$\mathcal{L}$ becomes a function of the matrix $U$ and the matrix
+$\lambda$. This is not very different form a function of a vector in
+abstract terms.
+
+How do we go about computing the extrema of a functional?  A function
+of a single real variable has an intuitive notion of a local extremum,
+and most readers probably have an intuitive notion of extrema of
+two-variable functions as well. But if we go to higher dimensions (or
+infinite dimensions!)  it becomes more complicated.
+
+We will introduce the concept of a \emph{directional derivative}. This
+is very handy, and allows us to read off the condition for an extremum
+in a straight-forward manner.
+
+\subsection{Functions of one real variable}
+
+Consider first a simple
+function $F : I \to \RR$, $I\subset \RR$ being an interval. Suppose
+$x_0 \in I$. Assuming that $F$ can be differentiated at leat twice, we can compute
+a second-order Taylor expansion around $x_0$, viz,
+\begin{equation}
+  F(x_0 + \epsilon) \approx  F(x_0) + \epsilon F'(x_0) +
+  \frac{1}{2}\epsilon^2 F''(x_0) .
+\end{equation}
+The error in this approximation vanishes as $\epsilon\to 0$.
+
+The condition for an extremum at $x_0$ is $F'(x_0)=0$. The
+second-order term tells us the nature of the extremum: 
+if $F''(x_0) > 0$ then $x_0$ is a local minimum. If $F''(x_0) < 0$
+then $x_0$ is a local maximum. Finally, if $F''(x_0) = 0$, we cannot
+determine right away if we have a maximum or minimum. We may have
+neither, as for $F(x) = x^3$, where $x_0 = 0$ is a saddle point. A
+minimum and a maximum is illustrated in Fig.~\ref{fig:extrema-1}.
+
+\begin{figure}
+  \begin{center}
+
+    \begin{tikzpicture}
+      \begin{scope}[xshift=0cm]
+        \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+        \draw[->] (0,0) -- (0,4) node[above] {$F(x)$};
+        \draw[scale=1.0,domain=-2:2,smooth,variable=\x,blue] plot
+        ({\x},{\x*\x});
+        \filldraw (0,0) circle (.1) node[anchor=north] {$x_0$};  
+      \end{scope}
+      \begin{scope}[xshift=5cm]
+        \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+        \draw[->] (0,0) -- (0,4) node[above] {$F(x)$};
+        \draw[scale=1.0,domain=-2:2,smooth,variable=\x,blue] plot
+        ({\x},{10*\x*\x*sin(\x)});
+        \filldraw (0,0) circle (.1) node[anchor=north] {$x_0$};  
+      \end{scope}
+    \end{tikzpicture}
+
+    \caption{Simple functions of one real variables with a local
+      minimum ($F''(x_0)>0$) (left) and a saddle point ($F''(x_0) =
+      0$) (right).\label{fig:extrema-1}.}
+  \end{center}
+\end{figure}
+
+
+\subsection{Functions of two real variables}
+
+Consider yourself in a landscape of mountains and valleys. The
+elevation is $F(x,y)$. You are trying to find, say, a local minimum
+$(x_0,y_0)$ of elevation. On a map, a local minimum will show up as
+successively smaller closed curves of equal elevation, see
+Fig.~\ref{fig:extrema-2}. (The same is true for a maximum. A saddle
+point is a crossing of lines of equal elevation.) We now observe, that
+if you move in a direction $\eta = (\delta x, \delta y)$ from the
+local minium, you
+\emph{will always walk uphill}, that is, the function
+\[ f(\epsilon) = F(x_0 + \epsilon \delta x, y_0 + \epsilon \delta
+y) \]
+always has a local minimum at $\epsilon=0$, irrespective of $\eta$.
+If you were standing on a mountaintop (a local maximum) you
+would always walk downhill, and $f(\epsilon)$ would always have a
+local maximum at $\epsilon=0$. 
+
+You are standing
+between two mountaintops to the east and west, and looking down at
+valleys to the south and north. This is a saddle point. You are
+walking downhill if you go north or south, but uphill if you go east
+or west: $f(\epsilon)$ has a local minimum for some $\eta$, and a
+maximum for other $\eta$.
+
+Let us compute the Taylor expansion of $f(\epsilon)$:
+\begin{equation}
+  \begin{split}
+    f(\epsilon) &\approx f(0) + \epsilon f'(0) + \tfrac{1}{2}\epsilon^2
+    f''(0) \\
+    & = F(x_0,y_0) + \epsilom \nabla F(x_0,y_0)^T \begin{pmatrix}
+      \delta x\\\delta y\end{pmatrx} + \frac{1}{2} \epsilon^2 (\delta
+    x \; \delta y) H(x_0, y_0) \begin{pmatrix} \delta x\\\delta y\end{pmatrix}.
+  \end{split}
+\end{equation}
+
