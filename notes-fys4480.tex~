@@ -625,8 +625,8 @@ matrix determinants.
      \det(A)[\phi_1,\phi_2,\cdots,\phi_N].
    \end{equation}
    (Hint: use antisymmetry of Slater determinants with respect to
-   permutations of single-particle functions, and the definition
-   $\det(A) = \sum_{\sigma\in S_N} A_{1\sigma(1)}A_{2\sigma(2)}
+   permutations of single-particle functions, and the expression
+   $\det(A) = \sum_{\sigma\in S_N} (-1)^{|\sigma|}A_{1\sigma(1)}A_{2\sigma(2)}
    \cdots A_{N\sigma(N)}.$)
  \end{exercise}
 
@@ -3054,7 +3054,7 @@ matrix element, see the exercises.
   \end{enumerate}
 \end{exercise}
 
-\section{Operators on normal-order form}
+\section{Operators on normal-order form (Not yet lectured)}
 
 \subsection{The number operator}
 
@@ -4505,17 +4505,25 @@ and annihilation operators.
 
 
 
-\section{Hartree--Fock theory}
+\section{Hartree--Fock theory (HF)}
+\label{sec:hf}
+
+\subsection{The Hartree--Fock equations}
+\label{sef:hf-equations}
+
+
+Suggested reading for this section: Szabo/Ostlund Ch.~13,
+Harris/Monkhorst/Freeman Ch.~3, Gross/Runge/Heinonen Ch.~7.
+
+It is highly recommended to read the mathematical supplement in the
+Appendix, Sec.~\ref{sec:calculus-of-variations} on the calculus of
+variations.
 
 One of the earliest and most successful approximation methods for
 many-fermion systems was the \emph{Hartree--Fock method} (HF method). In
 Hartree--Fock theory we parametrize our wavefunction as a single Slater
 determinant. However, \emph{the single-particle functions are the
   unknowns to be determined by the variational procedure}.
-
-Suggested reading for this section: Szabo/Ostlund Ch.~13,
-Harris/Monkhorst/Freeman Ch.~3, Gross/Runge/Heinonen Ch.~7.
-
 
 Thus, our wavefunction manifold $\mathcal{M}$ consists of all possible
 functions on the form
@@ -4547,8 +4555,10 @@ Exercise~\ref{exercise:slater-condon-rules}. Here,
 \begin{equation}
   \braket{\phi_p\phi_q|\hat{w}|\phi_r\phi_s} \equiv \int
   dx_1\int dx_2 \phi_p(x_1)^*\phi_q(x_2)^* w(x_1,x_2)
-  \phi_r(x_1)\phi_s(x_2).
+  \phi_r(x_1)\phi_s(x_2),
 \end{equation}
+which satisfies
+$\braket{\phi_p\phi_q|\hat{w}|\phi_r\phi_s}=\braket{\phi_q\phi_p|\hat{w}|\phi_s\phi_r}$. 
 The task is now to minimize this energy $\braket{\Phi|\hat{H}|\Phi}$
 subject to the constraint that the $\phi_i$ are orthonormalized,
 \begin{equation}
@@ -4559,57 +4569,64 @@ $\ket{\Phi_\text{HF}}$, the Hartree--Fock state.
 
 The constraints constitute a complication that we want to get rid
 of. We therefore \emph{Lagrange multipliers}, one for each constraint, giving
-a Lagrangian
+a Lagrangian functional
 \begin{equation}
   \begin{split}
-  \mathcal{L}(\phi_1,\cdots,\phi_N, \lambda) &=
+  \mathcal{L}[\phi_1,\cdots,\phi_N, \lambda] &=
   \braket{\Phi|\hat{H}|\Phi} -
-  \sum_{ij}\lambda_{ij}(\braket{\phi_i|\phi_j} - \delta_{ij}) \\
+  \sum_{ij}\lambda_{ji}(\braket{\phi_i|\phi_j} - \delta_{ij}) \\
   &=\sum_i 
   \braket{\phi_i|\hat{h}|\phi_i} + \frac{1}{2}\sum_{ij} \braket{\phi_i
     \phi_j | \hat{w} |\phi_i\phi_j - \phi_j\phi_i} -
-  \sum_{ij}\lambda_{ij}(\braket{\phi_i|\phi_j}-\delta_{ij}) \label{eq:hf-lagrangian}
+  \sum_{ij}\lambda_{ji}(\braket{\phi_i|\phi_j}-\delta_{ij}) \label{eq:hf-lagrangian}
 \end{split}
 \end{equation}
+Recall, that computing an extremum for the constrained
+problem is equivalent to an \emph{unconstrained} extremalization of
+$\mathcal{L}$ with respect to the $\phi_i$ \emph{and} the Lagrange
+multipliers (see any text on vector calculus). 
+
 Due to symmetry of the constraints, the Lagrange multiplier matrix
 $\lambda$ can be assumed to be Hermitian\footnote{To see this, assume
-  that $a_{ij}$ is a matrix which is not assumed to be Hermitian. Note
+  that $a_{ji}$ is a matrix which is not assumed to be Hermitian. Note
   that the expression $g_{ij} = \braket{\phi_i|\phi_j}-\delta_{ij}$
-  satisfies $g_{ij}^* = g_{ji}$. Thus, $\sum_{ij} a_{ij} g_{ij} =
-  \sum_{ij} a_{ij} g_{ji}^* = \sum_{ij} a_{ji} g_{ij}^* = (\sum_{ij}
-  a_{ij}^* g_{ij})^*$. This gives $\sum_{ij} a_{ij}g_{ij} =
-  \tfrac{1}{2}\sum_{ij}(a_{ij}+a_{ji}^*)g_{ij}$. Take $\lambda_{ij}=
-  a_{ij}+a_{ji}^*$.}. Computing a stationary point for the constrained
-problem is equivalent to an \emph{unconstrained} optimization of
-$\mathcal{L}$ with respect to the $\phi_i$ \emph{and} the Lagrange
-multipliers.
+  satisfies $g_{ij}^* = g_{ji}$. Thus, $\sum_{ij} a_{ji} g_{ij} =
+  \sum_{ij} a_{ji} g_{ji}^* = \sum_{ij} a_{ij} g_{ij}^* = (\sum_{ij}
+  a_{ij}^* g_{ij})^*$. This gives $\sum_{ij} a_{ji}g_{ij} =
+  \tfrac{1}{2}\sum_{ij}(a_{ji}+a_{ij}^*)g_{ij}$. Take $\lambda_{ji}=
+  a_{ji}+a_{ij}^*$.}. 
 
-A word on a
-special notation: We are going to compute the variation of expressons
-like $\braket{\phi_i\phi_j|\hat{w}|\phi_i\phi_j}$ with respect to
-$\phi_i$. This variation will be a single-particle function. For an
-arbitrary 
-(possibly unsymmetrized) two-particle function $\ket{U} \in L_1^2\otimes
-L_1^2$, and a single-particle function $\ket{v} \in L^2_1$, we define
-\begin{equation}
-  \braket{\;\cdot\; v|U} \in L^2_1
-\end{equation}
-as the single-particle function obtained by integrating only over the
-second particle, viz,
-\begin{equation}
-  \bra{x_1}\braket{\;\cdot\; v|U} \equiv \int v(x_2)^* U(x_1,x_2)\; dx_2.
-\end{equation}
-In other words, given an orthonormal single-particle basis $\{\chi_\mu\} \subset
-L^2_1$, the expansion of $\braket{\;\cdot\; v|U}$ is given by
-\begin{equation}
-  \braket{\;\cdot\; v|U} = \sum_\mu \ket{\chi_\mu}\braket{\chi_\mu
-    v|U}, \quad \braket{\chi_\mu
-    v|U} = \int\!\!\int \chi_\mu(x_1)^* v(x_2)^* U(x_1,x_2) \; dx_1
-  dx_2.
-\end{equation}
 
-We now state and prove our result:
-\begin{theorem}[Hartree--Fock equations]
+A word on a special notation. We define a single-particle function
+\begin{equation}
+  \braket{\;\cdot\; \phi_q|\hat{w}|\phi_r\phi_s} \in L^2_1
+\end{equation}
+as the function obtained by integrating only over the
+second particle in the inner product, viz,
+\begin{equation}
+  \braket{\;\cdot\; \phi_q|\hat{w}|\phi_r \phi_s}(x_1) \equiv \int
+  \phi_q(x_2)^* w(x_1,x_2) \phi_r(x_1)\phi_s(x_2) \; dx_2.
+\end{equation}
+The inner product with any single-particle function $\chi$ is
+\begin{equation}
+  \bra{\chi}\braket{\;\cdot\; \phi_q|\hat{w}|\phi_r \phi_s} = \iint
+  \chi(x_1)^* \phi_q(x_2)^* w(x_1,x_2) \phi_r(x_1)\phi_s(x_2) \; dx_1
+  dx_2 = \braket{\chi\phi_q|\hat{w}|\phi_r\phi_s},
+\end{equation}
+i.e., the full two-particle integral. Thus, the dot represents an
+``unused slot'' in the two-particle matrix element. 
+
+We can expand the
+function in any orthonormal single-particle basis $\{\chi_p\} \subset
+L^2_1$,
+\begin{equation}
+  \braket{\;\cdot\; \phi_q|\hat{w}|\phi_r\phi_s} = \sum_p
+  \ket{\chi_p}\bra{\chi_p}\braket{\;\cdot\; \phi_q|\hat{w}|\phi_r\phi_s}
+    = \sum_p
+  \ket{\chi_p}\braket{\chi_p \phi_q|\hat{w}|\phi_r\phi_s}. \label{eq:emptyslot}
+\end{equation}
+Thus will be useful when we now state and prove our result:
+\begin{theorem}[Hartree--Fock equations]\label{thm:hf-equations}
   The single-particle functions of the Hartree--Fock state
   $\ket{\Phi_\text{HF}}$ satisfy
 %Suppose the single-particle functions $\phi_i$, $i=1,\cdots N$ satisfy
@@ -4620,17 +4637,17 @@ We now state and prove our result:
   \end{equation}
   where
   \begin{equation}
-    \hat{f}(\phi_1,\cdots,\phi_N) = \hat{h} + \hat{v}^\text{direct}
+    \hat{f}(\phi_1,\cdots,\phi_N) \equiv \hat{h} + \hat{v}^\text{direct}
      - \hat{v}^\text{exchange},\label{eq:fock-op}
   \end{equation}
   with
   \begin{equation}
-    \hat{v}^\text{direct}\ket{\psi} = \sum_j \braket{\; \cdot \;
+    \hat{v}^\text{direct}\ket{\psi} \equiv \sum_j \braket{\; \cdot \;
       \phi_j|\hat{w}|\psi\phi_j}. \label{eq:direct}
   \end{equation}
   and
   \begin{equation}
-    \hat{v}^\text{exchange}\ket{\psi} = \sum_j \braket{\; \cdot \;
+    \hat{v}^\text{exchange}\ket{\psi} \equiv \sum_j \braket{\; \cdot \;
       \phi_j|\hat{w}|\phi_j\psi}. \label{eq:exchange}
   \end{equation}
   % \begin{equation}
@@ -4651,64 +4668,62 @@ We now state and prove our result:
   referred to as ``the Hartree--Fock equations''. The operator
   $\hat{f}$ in Eq.~\eqref{eq:fock-op} is ``the Fock operator'', and
   $\hat{v}^\text{direct}$ and $\hat{v}^\text{exchange}$ are the direct-
-  and exchange potential, respectively.
+  and exchange potentials, respectively.
 \end{theorem}
 
 \begin{proof}
-  Since for the Hartree--Fock state the energy $\braket{\Phi|\hat{H}|\Phi}$ is a
-  minimum, we need to show that the energy has zero variation under
-  all the possible variations of the $\phi_i$ that preserve
-  orthonormality $\braket{\phi_i|\phi_j} = \delta_{ij}$. In other
-  words that the Lagrangian $\mathcal{L}$ defined in
-  Eq.~\eqref{eq:hf-lagrangian} has a zero variation under
-  \emph{unconstrained} variation, allowing also those that destroy
-  orthonormality. We also need to identify the Lagrange multipliers,
-  and they will turn out to be related to the eigenvalues
-  $\epsilon_i$.
+  In the language of Sec.~\ref{sec:calculus-of-variations}, we need to
+  show that the directional derivative of the Lagrangian
+  vanishes.
+
+  We first note that $\lambda_{ji}$ can be treated separately:
+  $\partial \mathcal{L}/\partial \lambda_{ji} = \braket{\phi_i|\phi_j}
+  - \delta_{ij}$, the constraint. These equations are ensured
+  fulfilled in the end by finding solutions $\phi_i$ that are in fact
+  orthonormal. We thus only compute the directional derivatives with
+  respect to variations of the $\phi_i$.
 
   %As in the proof for the variational principle, we can treat $\phi_i$
   %and $\phi_i^*$ as independent variables, varying only the bra
   %states (see Exercise \ref{exercise:vp-complex}). 
 
-  We are going to vary the function $\phi_k$ only, for a fixed $k$,
-  which turns out to be sufficient to find all the equations. Thus,
-  let $\epsilon$ be a small real number, and let $\ket{\eta}$ be a
-  normalized single-particle function. Thus, our small variation of
-  $\phi_k$ is
-  \[ \ket{\delta\phi_k} = \epsilon \ket{\eta}. \]
-  The other functions have zero variation, so in total
-  \begin{equation}
-    \ket{\phi_i + \delta\phi_i}, \quad \ket{\delta\phi_i} =
-    \delta_{ki}\epsilon\ket{\eta}, 
-  \end{equation}
+  Choose a $k\in\{1,\cdots,N\}$.
+  We are going to compute the directional derivative with respect to
+  changes in the function $\phi_k$ only, leaving the other
+  fixed. This turns out to be sufficient to find all the equations. Thus,
+  let $\epsilon$ be a small real number, and let ${\eta}$ be a
+  normalized single-particle function. We write
+  \[ {\delta\phi_k} = \epsilon \eta,  \]
+  The other functions are fixed, $\delta \phi_i = 0$ for $i\neq k$.
   Define the function
   \begin{equation}
-    f(\epsilon) = \mathcal{L}(\phi_1 + \delta\phi_1,\cdots, \phi_N + \delta\phi_N, \lambda),
+    f(\epsilon) = \mathcal{L}(\phi_1,\cdots,\phi_k +
+    \epsilon\eta,\cdots,\phi_N, \lambda), 
   \end{equation}
-  i.e., the Lagrangian evaluated at the slightly perturbed
-  functions. To first order in $\epsilon$,
+  To first order in $\epsilon$,
   \begin{equation}
     f(\epsilon) = f(0) + \epsilon f'(0) + O(\epsilon^2),
-    + \ldots,
   \end{equation}
-  where we have assumed that $\epsilon$ is so small that the
-  higher-order terms can be safely neglected.
+  and we for an extremal point of $\mathcal{L}$, we must have that for
+  any $\eta$, $f'(0)=0$.
+  In the language of
+  Sec.~\ref{sec:calculus-of-variations}, the directional derivative of
+  $\mathcal{L}$ at $\{\phi_i\}_{i=1}^N$ in the direction $\delta\phi_i/\epsilon$ vanishes. 
 
-  We want $\mathcal{L}$ to not change value (to first order in
-  $\epsilon$). The variational equation is thus equivalent to
-  $f'(0)=0$.
   We compute the Taylor expansion of $f(\epsilon)$ by direct
   computation of the perturbed Lagrangian:
   \begin{equation}
     \begin{split}
-      f(\epsilon) &= \mathcal{L}(\phi+\delta\phi,\lambda) = \sum_i
-      \braket{\phi_i + \delta\phi_i|\hat{h}|\phi_i + \delta\phi_i} +
-      \frac{1}{2}\sum_{ij} \braket{(\phi_i + \delta\phi_i)(\phi_j +
-        \delta\phi_j)|\hat{w}|(\phi_i + \delta\phi_i)(\phi_j +
-        \delta\phi_j)} \\ &\qquad - \frac{1}{2}\sum_{ij}
-      \braket{(\phi_i + \delta\phi_i)(\phi_j +
-        \delta\phi_j)|\hat{w}|(\phi_j + \delta\phi_j)(\phi_i +
-        \delta\phi_i)} \\
+      f(\epsilon) 
+      %&= \mathcal{L}(\phi+\delta\phi,\lambda) = \sum_i
+      %\braket{\phi_i + \delta\phi_i|\hat{h}|\phi_i + \delta\phi_i} +
+      %\frac{1}{2}\sum_{ij} \braket{(\phi_i + \delta\phi_i)(\phi_j +
+      %  \delta\phi_j)|\hat{w}|(\phi_i + \delta\phi_i)(\phi_j +
+      %  \delta\phi_j)} \\ &\qquad - \frac{1}{2}\sum_{ij}
+      %\braket{(\phi_i + \delta\phi_i)(\phi_j +
+      %  \delta\phi_j)|\hat{w}|(\phi_j + \delta\phi_j)(\phi_i +
+      %  \delta\phi_i)} - \sum_{ij} \lambda_{ij}(\braket{\phi_i +
+      %  \delta\phi_i|\phi_j + \delta\phi_j} - \delta_{ij}) \\
       &= \sum_i
       \braket{\phi_i + \delta_{ki}\epsilon\eta|\hat{h}|\phi_i + \delta_{ki}\epsilon\eta} +
       \frac{1}{2}\sum_{ij} \braket{(\phi_i + \delta_{ki}\epsilon\eta)(\phi_j +
@@ -4716,7 +4731,8 @@ We now state and prove our result:
         \delta_{kj}\epsilon\eta)} \\ &\qquad - \frac{1}{2}\sum_{ij}
       \braket{(\phi_i + \delta_{ki}\epsilon\eta)(\phi_j +
         \delta_{kj}\epsilon\eta)|\hat{w}|(\phi_j + \delta_{kj}\epsilon\eta)(\phi_i +
-        \delta_{ki}\epsilon\eta)} 
+        \delta_{ki}\epsilon\eta)} \\&\qquad- \sum_{ij} \lambda_{ji}(\braket{\phi_i +
+        \delta_{ik}\epsilon\eta|\phi_j + \delta_{jk}\epsilon\eta} - \delta_{ij}) 
     \end{split}
   \end{equation}
   We now write out the matrix elements, but keep only terms up to
@@ -4740,16 +4756,15 @@ We now state and prove our result:
       \braket{\phi_i\phi_k|\hat{w}|\phi_i\eta} 
       - \frac{1}{2}\sum_i\epsilon\braket{\phi_i
         \phi_k|\hat{w}|\eta\phi_i}
-      - \frac{1}{2}\sum_j\epsilon\braket{\phi_k \phi_j|\hat{w}|\phi_j\eta}
+      - \frac{1}{2}\sum_j\epsilon\braket{\phi_k
+        \phi_j|\hat{w}|\phi_j\eta} \\
+      & \qquad - \sum_j \lambda_{jk} \epsilon \braket{\eta|\phi_j} -
+      \sum_i \lambda_{ki} \epsilon \braket{\phi_i|\eta} -
+      \sum_{ij}\lambda_{ji}(\braket{\phi_i|\phi_i} - \delta_{ij}) + O(\epsilon^2)
     \end{split}
   \end{equation}
   We now use the symmetry property of the matrix elements of
-  $\hat{w}$:
-  \begin{equation}
-    \braket{\phi_1\phi_2|\hat{w}|\phi_3\phi_4} =
-    \braket{\phi_2\phi_1|\hat{w}|\phi_4\phi_3}.
-  \end{equation}
-  This gives, for example:
+  $\hat{w}$. This gives, for example,
   \begin{equation}
      \frac{1}{2} \sum_i
     \braket{\phi_i \eta|\hat{w}|\phi_i \phi_k} = 
@@ -4758,88 +4773,139 @@ We now state and prove our result:
     \frac{1}{2}\sum_j
     \braket{\eta\phi_j|\hat{w}|\phi_k\phi_j}.
   \end{equation}
-  This gives a simplification of $f(\epsilon)$, 
+  This gives a simplification of $f(\epsilon)$, and we regroup:
   \begin{equation}
     \begin{split}
     f(\epsilon) &= \sum_i \braket{\phi_i|\hat{h}|\phi_i} +
       \frac{1}{2}\sum_{ij} \braket{\phi_i \phi_j|\hat{w}|\phi_i\phi_j
-        - \phi_j \phi_i} +
+        - \phi_j \phi_i} -
+      \sum_{ij}\lambda_{ji}(\braket{\phi_i|\phi_i} - \delta_{ij}) \\
+      &\qquad +
       \epsilon\braket{\eta|\hat{h}|\phi_k} +
-      \epsilon\braket{\phi_k|\hat{h}|\eta} \\ 
-      & \qquad + \epsilon \sum_j
+      \epsilon\braket{\phi_k|\hat{h}|\eta} 
+      + \epsilon \sum_j
       \braket{\eta\phi_j|\hat{w}|\phi_k\phi_j} - \epsilon \sum_j
       \braket{\eta\phi_j|\hat{w}|\phi_j\phi_k} 
-      + \epsilon
-      \sum_j\braket{\phi_k\phi_j|\hat{w}|\eta\phi_j} - \sum_j\epsilon\braket{\phi_k
-        \phi_j|\hat{w}|\phi_j\eta} 
+      \\ &\qquad + \epsilon
+      \sum_j\braket{\phi_k\phi_j|\hat{w}|\eta\phi_j} -
+      \sum_j\epsilon\braket{\phi_k \phi_j|\hat{w}|\phi_j\eta} 
+      - \epsilon \sum_j \lambda_{jk} \braket{\eta|\phi_j} -
+      \epsilon \sum_j \lambda_{kj}\braket{\phi_j|\eta} + O(\epsilon^2)
     \end{split}
   \end{equation}
-  We read off $f'(\epsilon)$, and obtain the equation
+  We recognize that the zeroth order term is just $f(0) =
+  \mathcal{L}(\phi_1,\cdots,\phi_N,\lambda)$. We read off
+  $f'(\epsilon)$, and obtain the directional derivative, and hence the
+  equation
   \begin{equation}
+    \begin{split}
+    0 &=       \braket{\eta|\hat{h}|\phi_k} +
+      \braket{\phi_k|\hat{h}|\eta} 
+       + \sum_j
+      \braket{\eta\phi_j|\hat{w}|\phi_k\phi_j} - \sum_j
+      \braket{\eta\phi_j|\hat{w}|\phi_j\phi_k} 
+      \\ &\qquad + 
+      \sum_j\braket{\phi_k\phi_j|\hat{w}|\eta\phi_j} - \sum_j\braket{\phi_k
+        \phi_j|\hat{w}|\phi_j\eta} - \sum_j
+      \lambda_{kj}\braket{\phi_j|\eta} - \sum_j
+      \lambda_{jk}\braket{\eta|\phi_j},
+    \end{split}
   \end{equation}
   which must be valid for all choices of the function $\eta$. In
-  particular we can also instert $i\eta$. In a similar fashion as the
-  proof for the variational principle, we get that the following
-  equation must be satisfied for all $\eta$:
+  particular we can also insert $i\eta$, giving, after dividing the
+  result by $i$,
   \begin{equation}
+    \begin{split}
+    0 &=       -\braket{\eta|\hat{h}|\phi_k} +
+      \braket{\phi_k|\hat{h}|\eta} 
+       - \sum_j
+      \braket{\eta\phi_j|\hat{w}|\phi_k\phi_j} + \sum_j
+      \braket{\eta\phi_j|\hat{w}|\phi_j\phi_k} 
+      \\ &\qquad + 
+      \sum_j\braket{\phi_k\phi_j|\hat{w}|\eta\phi_j} - \sum_j\braket{\phi_k
+        \phi_j|\hat{w}|\phi_j\eta} - \sum_j
+      \lambda_{kj}\braket{\phi_j|\eta} + \sum_j
+      \lambda_{jk}\braket{\eta|\phi_j},
+    \end{split}
   \end{equation}
-  
-\begin{equation}
-    f(\epsilon) = \mathcal{E}(\phi_1,\cdots,\phi_N) + \epsilon
-    f'(0) + O(\epsilon^2)
-  \end{equation}
-  where $f'(0)$ is obtained as
+  Subtracting the two equations gives us
   \begin{equation}
-    f'(0) = \sum_i \braket{\eta_i|\hat{h}|\phi_i} +
-    \frac{1}{2}\sum_{ij} \left[\braket{\eta_i\phi_j|\hat{w}|\phi_i\phi_j} -
-    \braket{\eta_i \phi_j|\hat{w}|\phi_j \phi_i} + \braket{\phi_i
-      \eta_j|\hat{w}|\phi_i\phi_j} - 
-    \braket{\phi_i \eta_j|\hat{w}|\phi_j \phi_i}\right] -
-    \sum_{ij}\lambda_{ij} \braket{\eta_i|\phi_j}. 
-  \end{equation}
-  By symmetry,
-  \begin{equation}
-    f'(0) = \sum_i \braket{\eta_i|\hat{h}|\phi_i} + \sum_{ij}\left[
-    \braket{\eta_i \phi_j|\hat{w}|\phi_i\phi_j} - \braket{\eta_i\phi_j|\hat{w}|\phi_j \phi_i}\right] -
-    \sum_{ij} \lambda_{ij} \braket{\eta_i|\phi_j}.
-  \end{equation}
-  Equating $f'(0)=0$ gives us the stationary conditions, which must
-  hold for \emph{all} $\eta_i$ choices. In particular, setting all
-  $\eta_j=0$, $j\neq i$, and $\eta_i=\chi_\mu$, a single-particle
-  basis function, we obtain the equation:
-  \begin{equation}
-    \braket{\chi_\mu|\hat{h}|\phi_i} + \sum_{j}\left[
-    \braket{\chi_\mu \phi_j|\hat{w}|\phi_i\phi_j} - \braket{\chi_\mu\phi_j|\hat{w}|\phi_j \phi_i}\right] -
-    \sum_{j} \lambda_{ij} \braket{\chi_\mu|\phi_j} = 0
-  \end{equation}
-  We recognize this as the single-particle equation
-  \begin{equation}
-    \hat{h}\ket{\phi_i} + \sum_{j}\left[
-    \braket{\;\cdot\; \phi_j|\hat{w}|\phi_i\phi_j} - \braket{\;\cdot\;\phi_j|\hat{w}|\phi_j \phi_i}\right] -
-    \sum_{j} \lambda_{ij} \ket{\phi_j}.\label{eq:noncan-hf}
-  \end{equation}
+    0 = \braket{\eta|\hat{h}|\phi_k} 
+      + \sum_j
+      \braket{\eta\phi_j|\hat{w}|\phi_k\phi_j} - \sum_j
+      \braket{\eta\phi_j|\hat{w}|\phi_j\phi_k} - \sum_j
+      \lambda_{jk}\braket{\eta|\phi_j} , \quad \forall \eta.
+      \label{eq:almost-noncan-hf}
+    \end{equation}
+    Let $\{\chi_p\}$ be a complete orthonormal basis for single-particle
+    space $L^2_1$. 
+    Inserting $\eta = \chi_p$ in Eq.~\eqref{eq:almost-noncan-hf}, we
+    obtain
+    \begin{equation}
+      \begin{split}
+        0 &= \sum_p \ket{\chi_p}\left\{\braket{\chi_p|\hat{h}|\phi_k} 
+          + \sum_j
+          \braket{\chi_p\phi_j|\hat{w}|\phi_k\phi_j} - \sum_j
+          \braket{\chi_p\phi_j|\hat{w}|\phi_j\phi_k} - \sum_j
+          \lambda_{jk} \braket{\chi_p|\phi_j} \right\} \\ 
+        & = \hat{h}\ket{\phi_k} +       \sum_j \sum_p \ket{\chi_p} 
+        \braket{\chi_p\phi_j|\hat{w}|\phi_k\phi_j} - \sum_j\sum_p \ket{\chi_p} 
+        \braket{\chi_p\phi_j|\hat{w}|\phi_j\phi_k} - \sum_j
+        \lambda_{jk}\ket{\phi_j} . 
+      \end{split}
+    \end{equation}
+    Here, we used
+    \begin{equation}
+      1 = \sum_p \ket{\chi_p}\bra{\chi_p}.
+    \end{equation}
+    We use Eq.~\eqref{eq:emptyslot}, to get
+    \begin{equation}
+      0 = \hat{h}\ket{\phi_k} 
+      + \sum_j
+      \braket{\; \cdot\;  \phi_j|\hat{w}|\phi_k\phi_j} - \sum_j
+      \braket{\;\cdot \; \eta\phi_j|\hat{w}|\phi_j\phi_k} - \sum_j
+      \lambda_{jk} \ket{\phi_j} .\label{eq:noncan-hf}
+    \end{equation}
+    We now get rid of $\lambda$, replacing it with a diagonal matrix
+    with diagonal elements $\epsilon_k$ (not to be confused with the
+    small parameter $\epsilon$ above, which we now are done with.) 
 
-
-  The orbitals are orhornormal. The determinant $\ket{\Phi}$ is
-  invariant (up to an irrelevant phase) under a unitary mixing of the
-  single-particle functions, i.e, if we let
+    The
+    orbitals are orhornormal. The determinant $\ket{\Phi}$ is
+    invariant (up to an irrelevant phase) under a unitary mixing of
+    the single-particle functions, i.e, if we let
   \begin{equation}
-    \tilde{\phi}_k = \sum_j \phi_j U^*_{jk}
+    \tilde{\phi}_k = \sum_j \phi_j U_{jk}
   \end{equation}
   with $U$ a unitary matrix, then
-  $\ket{\tilde{\Phi}}=\det(U)^*\ket{\Phi}$, i.e., the same state, and
-  clearly the energy is invariant.
-
-  Select $U$ such that $U^H \lambda U = E$ is diagonal, i.e., $\lambda
-  = U E U^H$,
+  $\ket{\tilde{\Phi}}=\det(U)\ket{\Phi}$, i.e., the same state, and
+  clearly the energy must be the same too.
+  
+  As argued, $\lambda_{ij}=\lambda_{ji}^*$ can be assumed Hermitian.
+  Select therefore $U$ such that $\lambda
+  = U E U^H$, with $E_{jk} = \delta_{jk}\epsilon_k$ the elements of a
+  diagonal matrix (the eigenvalues of $\lambda$):
   \begin{equation}
-    \lambda_{ij} = \sum_k U_{ik} E_k U^*_{jk}.
+    \lambda_{ji} = \sum_k U_{j\ell} \epsilon_\ell U^*_{i\ell}.
   \end{equation}
-  Inserted into the equation \eqref{eq:noncan-hf}, we get
+  Let $\ket{r_i}$ be the right-hand side of Eq.~\eqref{eq:noncan-hf},
+  and consider
+  \begin{equation}
+    \sum_k U_{ik} \ket{r_k} = 0. \label{eq:nc-temp}
+  \end{equation}
+  Since $U$ is unitary, Eq.~\eqref{eq:noncan-hf} can only be satisfied
+  for all $k$ of Eq.~\eqref{eq:nc-temp} is satisfied for all
+  $i$. Computing the sum in Eq.~\eqref{eq:nc-temp} (see
+  Exercise~\ref{exercise:can-hf-final-step}) we obtain
+%  \begin{equation}
+%    \sum_{j} \lambda_{jk}\ket{\phi_j} = \sum_{\ell} U_{j\ell}
+%    \epsilon_\ell U^*_{k\ell} \ket{\phi_j} = \sum_\ell U^*_{k\ell}
+%    \epsilon_\ell \ket{\tilde{\phi}_\ell}.
+%  \end{equation}
   \begin{equation}
     \hat{h}\ket{\tilde{\phi}_i} + \sum_{j}\left[
-    \braket{\;\cdot\; \tilde{\phi}_j|\hat{w}|\tilde{\phi}_i\tilde{\phi}_j} - \braket{\;\cdot\;\tilde{\phi}_j|\hat{w}|\tilde{\phi}_j \tilde{\phi}_i}\right] =
-    E_i \ket{\tilde{\phi}_i}.\label{eq:noncan-hf}
+    \braket{\;\cdot\; \tilde{\phi}_j|\hat{w}|\tilde{\phi}_i\tilde{\phi}_j} - \braket{\;\cdot\;\tilde{\phi}_j|\hat{w}|\tilde{\phi}_j \tilde{\phi}_i}\right] -
+    \epsilon_i \ket{\tilde{\phi}_i} = 0. \label{eq:can-hf}
   \end{equation}
   This must hold for all $i=1,\cdots,N$ simultaneously.
   
@@ -4848,7 +4914,8 @@ We now state and prove our result:
   finished.
 \end{proof}
 
-Note that the theorem does not guarantee that the solutions to the HF
+
+The theorem does not guarantee that the solutions to the HF
 equations correspond to a the actual HF solution, i.e., a global
 minimum, or even a local minimum. It could well be a saddle
 point. Indeed, it has been found that the standard algorithms for the
@@ -4905,8 +4972,10 @@ we can express
 \end{equation}
 \begin{equation}
   \bra{x_1}\hat{v}^\text{exchange}\ket{\psi} = \int
-  \gamma(x_2,x_1)w(x_1,x_2)  \psi(x_2) \; dx_2 .
+  \gamma(x_1,x_2)w(x_1,x_2)  \psi(x_2) \; dx_2 .
 \end{equation}
+The reduced density matrix $\gamma$ will turn out to be a useful
+concept in Hartree--Fock theory.
 
 In the proof of the HF equations, we first found an equation whose solutions were not
 eigenfunctions, Eq.~\eqref{eq:noncan-hf}. However, by forming a
@@ -4915,6 +4984,9 @@ form, Eq.~\eqref{eq:hf-can}. We realized that the HF single-particle
 functions were not unique; any unitary transformation among the
 orbitals produces the \emph{same} $\ket{\Phi_\text{HF}}$.
 
+The diagonal form of the HF equations are referred to as \emph{the
+  canonical HF equations}, while the non-diagonal form is
+\emph{non-canonical}. 
 
 The HF equations are a set of eigenvalue equations that are nonlinear
 in the eigenvectors. Thus, the equations need to be solved
@@ -4937,29 +5009,54 @@ for \emph{mean-field theory}.
 % whichever solution we want.
 
 We only used the $N$ first eigenvectors of $\hat{f}$ to construct our
-HF wavefunction. But clearly, when these have been found, $\hat{f}=
-\hat{f}(\phi_1,\cdots,\phi_N)$ is ``just like'' any other one-body
-operator found so far, and we can in principle\footnote{It happens
+HF wavefunction. But when these have been found, $\hat{f}=
+\hat{f}(\phi_1,\cdots,\phi_N)$ is a fixed Hermitian operator (see Exercise~\ref{exercise:fock-hermitian}), and we can in principle\footnote{It happens
   that $\hat{f}$ has a continuous spectrum, so our statement must
   really be limited to finite-dimensional one-particle spaces for
-  strict validity.} find a complete basis
+  strict validity.} find a complete basis of eigenvectors of $\hat{f}$,
 \begin{equation}
-  \{ \phi_p \} = \{\phi_i \} \cup \{\phi_a\},
-\end{equation}
-satisfying
-\begin{equation}
-  \hat{f}\ket{\phi_p} = \epsilon_p \ket{\phi_p}. \label{eq:hf-can-all}
+  \{ \phi_p \} = \{\phi_i \} \cup \{\phi_a\}.
 \end{equation}
 This particular orthonormal basis is often taken as basis for proper
 manybody treatments, such as CI calculations, perturbation theory, and
-coupled-cluster (CC) theory (these are topics we return to later).
+coupled-cluster (CC) theory (these are topics we return to later). It
+is referred to as the \emph{canonical basis}, and 
+Eq.~\eqref{eq:hf-can-all} is an extenion of Eq.~\eqref{eq:hf-can} to
+include the extra single-particle functions $\phi_a$.
+
+This rather central, that we write it up as a definition that we can
+refer to later:
+\begin{definition}[Canonical HF equations, HF basis]\label{def:hf-can}
+  For a given two-body Hamiltonian
+  \begin{equation}
+   \hat{H} = \sum_{i=1}^N \hat{h}(i) + \sum_{i<j}^N \hat{w}(i,j),
+ \end{equation}
+ The equation
+ \begin{equation}
+   \hat{f}(\phi_1,\cdots,\phi_N)\ket{\phi_p} = \epsilon_p \ket{\phi_p}. \label{eq:hf-can-all}
+  \end{equation}
+  with the Fock operator
+  \begin{equation}
+    \hat{f}(\phi_1,\cdots,\phi_N) = \hat{h} + \hat{v}^\text{direct} -
+    \hat{v}^\text{exchange},
+  \end{equation} 
+  is referred to as the \emph{canonical Hartree--Fock
+    equations}, and the solutions are called the \emph{canonical
+    single-particle functions}.
+
+  The first $N$ HF single-particle functions $\phi_i$ are often called
+  \emph{occupied}, while the rest, $\phi_a$, are often called
+  \emph{virtual} single-particle functions.
+\end{definition}
+
 
 We now show an interesting relation for the Hartree--Fock energy. It
 is tempting to assume that $E_\text{HF} = \sum_i \epsilon_i$. However,
 this is not the case.
 \begin{theorem}[Energy expression for Hartree--Fock]
-Assume that a solution to the canonical Hartree--Fock equations have
-been found. The Hartree--Fock energy is given by
+  Assume that a solution $(\phi_i,\epsilon_i)$, $i=1,\cdots,N$, to the
+  canonical Hartree--Fock equations have been found. Then, the Hartree--Fock
+  energy is given by
 \begin{equation}
   E_\text{HF} = \sum_i \epsilon_i -
   \frac{1}{2}\sum_{ij}\braket{\phi_i\phi_i|\hat{w}|\phi_i\phi_j-\phi_j\phi_i}.
@@ -4977,6 +5074,14 @@ been found. The Hartree--Fock energy is given by
 \end{proof}
 
 
+\begin{exercise}\label{exercise:fock-hermitian}
+  Suppose the HF single-particle functions have been found, so that
+  the Fock operator $\hat{f}$ is a fixed operator. Prove that it is
+  Hermitian, i.e., for any two single-particle functions $\psi(x)$ and
+  $\psi'(x)$,
+  \[ \braket{\psi|\hat{f}|\psi'} = [\braket{\psi'|\hat{f}|\psi}]^*.\]
+\end{exercise}
+
 \begin{exercise}
   We show that the reduced one-particle density matrix is the same for
   canonical and non-canonical orbitals: Let $U$ be a unitary matrix
@@ -4992,41 +5097,89 @@ been found. The Hartree--Fock energy is given by
   $\hat{v}^\text{exchange}$? 
 \end{exercise}
 
-\begin{exercise}\label{exercise:vp-complex}
-  In this exercise, we show that it is legal to treat the wavefunction
-  and its complex conjugate as independent variables in the
-  variational procedure. (To be filled in.)
+
+\begin{exercise}\label{exercise:can-hf-final-step}
+  In this exercise, we fill in the details between Eq.~\eqref{eq:nc-temp} and
+  Eq.~\eqref{eq:can-hf} in the proof of
+  Theorem~\ref{thm:hf-equations}.
+  \begin{enumerate}
+    \item[a)] 
+      Prove that
+      \begin{equation}
+        \sum_k U_{ik} \hat{h}\ket{\phi_k} = \hat{h}\ket{\tilde{\phi}_i}.
+      \end{equation}
+    \item[b)]
+      Next, show that
+      \begin{equation}
+        \sum_k U_{ik} \sum_{j} \lambda_{jk}\ket{\phi_j} = \epsilon_i
+        \ket{\tilde{\phi}_i} .
+      \end{equation}
+    \item[c)]
+      As an intermediate calculation, show that
+      \begin{equation}
+        \ket{\phi_i} = \sum_k U_{ki}^* \ket{\tilde{\phi}_k}.
+      \end{equation}
+    \item[d)]
+      Show that 
+      \begin{equation}
+        \sum_k U_{ik} \sum_j
+         \braket{\;\cdot\;\phi_j|\hat{w}|\phi_k\phi_j} =  \sum_j
+         \braket{\;\cdot\;\tilde{\phi}_j|\hat{w}|\tilde{\phi}_i\tilde{\phi}_j}
+         .
+       \end{equation}
+    \item[e)]
+      Show that 
+      \begin{equation}
+        \sum_k U_{ik} \sum_j
+         \braket{\;\cdot\;\phi_j|\hat{w}|\phi_j\phi_k} =  \sum_j
+         \braket{\;\cdot\;\tilde{\phi}_j|\hat{w}|\tilde{\phi}_j\tilde{\phi}_i}
+         .
+       \end{equation}
+       \item[f)]
+         Gather the results of a), b), d), and e), to show that
+         Eq.~\eqref{eq:nc-temp} becomes Eq.~\eqref{eq:can-hf}.
+     \end{enumerate}      
 \end{exercise}
 
 
-\subsection{The Hartree--Fock equations in a given basis}
+\subsection{The Hartree--Fock equations in a given basis: the
+  Roothan--Hall equations}
 
 How do we solve the HF equations \eqref{eq:hf-can}? In this section,
 we reformulate the HF equations relative to a fixed basis,
 $\{\chi_p\}_{p=1}^L$. For practical reasons, of course, the basis must
 have a finite size $L$. However, we do \emph{not} assume that it is
 orthonormal. Thus, we have a \emph{possibly non-diagonal overlap
-  matrix $S$},
+  matrix $S$ of size $L\times L$},
 \begin{equation}
-  S_{pq} \equiv \braket{\phi_p|\phi_q}.
+  S_{pq} \equiv \braket{\chi_p|\chi_q}.
 \end{equation}
 and we must have that $S^{-1}$ exists since the $\phi_p$ form a basis.
 
-We
-expand our HF functions as
+Such basis functions are common in quantum chemistry, where a
+non-orthogonal basis of \emph{Gaussian functions centered on the
+  atoms} is typically employed. See for example Szabo/Ostlund or
+Helgaker/J{\o}rgensen/Olsen for details. For now, we just keep this
+remark as a motivation for not assuming orthogonality. In nuclear
+physics or solid state physics, orthogonal functions $\chi_p$ are more
+typical.
+
+We expand our HF functions as
 \begin{equation}
   \ket{\phi_p} = \sum_q  \ket{\chi_q} U_{qp} ,
 \end{equation}
-where $U$ is a unitary matrix. We notice that the \emph{columns} of $U$ are
+where $U$ is in general not a unitary matrix, since the basis is not
+orthogonal. (However, we have $U^HSU = I$, the identity matrix, see
+Exercise~\ref{exercise:hf-normalization}.)  We notice that the \emph{columns} of $U$ are
 the basis expansions of each $\phi_p$.  We write $u_p$ for column
 number $p$, $\ket{\phi_p}=\sum_q \ket{\chi_q} (u_p)_q$.
 
 The reduced density matrix becomes
 \begin{equation}
-  \gamma = \sum_i \ket{\phi_i}\bra{\phi_i} = \sum_{pq}\sum_i
+  \gamma(x,x') = \sum_i \braket{x|\phi_i}\braket{\phi_i|x'} = \sum_{pq}\sum_i
   {U}_{qi}\ket{\chi_q}\bra{\chi_{p}} {U}_{pi}^* =
-  \sum_{pq} (\sum_i U_{qi} U_{pi}^*) \ket{\chi_q}\bra{\chi_p} =
-  \sum_{pq} (U_{1:N}U_{1:N}^\dag)_{qp} \ket{\chi_q}\bra{\chi_p},
+  \sum_{pq} (\sum_i U_{qi} U_{pi}^*) \braket{x|\chi_q}\braket{\chi_p|x'} =
+  \sum_{pq} (U_{1:N}U_{1:N}^H)_{qp} \braket{x|\chi_q}\braket{\chi_p|x'},
 \end{equation}
 and it makes sense to define
 \begin{equation}
@@ -5036,16 +5189,19 @@ which we interpret as the reduced density matrix relative to the given basis
 $\{\chi_p\}$, depending on the $N$ first columns of ${U}$
 only.
 
-We now demonstrate how the HF equations~\eqref{eq:hf-can-all} can be written
+We now demonstrate how the canonical HF
+equations~\eqref{eq:hf-can-all} can be written
 \begin{equation}
-  F(D) U_{1:N} = SU_{1:N} \epsilon, \label{eq:hf-can-matrix}
+  F(D) U = S U \epsilon, \label{eq:hf-can-matrix}
 \end{equation}
 where
 \begin{equation}
-  F_{pq} = \braket{\chi_p|\hat{f}(\gamma)|\chi_q}
+  F_{pq} = \braket{\chi_p|\hat{f}(\phi_1,\cdots,\phi_N)|\chi_q}
 \end{equation}
 are the matrix elements of the Fock operator in the fixed basis, and
-where $\epsilon = \operatorname{diag}(\epsilon_1,\cdots,\epsilon_N)$.
+where $\epsilon = \operatorname{diag}(\epsilon_1,\cdots,\epsilon_L)$
+is a diagonal matrix. Equation~\eqref{eq:hf-can-all} is a nonlinear
+generalized eigenvalue problem.
 
 % Recall that we can write $\hat{f}(\phi_1\cdots\phi_N) =
 %\hat{f}(\gamma)$, since $\hat{v}^\text{exchange}$ and
@@ -5085,44 +5241,61 @@ We obtain
 Note that we have expressed $F_{qp}$ in terms of
 \emph{non-antisymmetric} matrix elements of $\hat{w}$.
 
-Thus, projecting the LHS in the HF equations onto the basis gives
+Thus, projecting the LHS of the canonical HF equations onto the basis gives
 \begin{equation}
-  \bra{\chi_p } \hat{f} \ket{\phi_i} = \sum_q
-  \braket{\chi_p|\hat{f}|\chi_q} U_{qi} = \sum_q F_{pq} U_{qi}, \quad
-  \forall i,p.
+  \bra{\chi_q } \hat{f} \ket{\phi_p} = \sum_{q'}
+  \braket{\chi_q|\hat{f}|\chi_{q'}} U_{q'p} = \sum_{q'} F_{qq'} U_{q'p}, \quad
+  \forall q,p.
 \end{equation}
 The right-hand side gives the projection
 \begin{equation}
-  \braket{\chi_p|\phi_i}\epsilon_i = \sum_q
-  \braket{\chi_p|\chi_q}U_{qi}\epsilon_i = \sum_q S_{pq} U_{qi}
-  \epsilon_i, \quad \forall i,p.
+  \braket{\chi_q|\phi_p}\epsilon_p = \sum_{q'}
+  \braket{\chi_q|\chi_{q'}}U_{q'p}\epsilon_p = \sum_{q'} S_{qq'} U_{q'p}
+  \epsilon_i, \quad \forall q,p.
 \end{equation}
 Gathering, we find
 \begin{equation}
-  F U_{1:N} = S U_{1:N} \epsilon, \label{eq:roothan-hall}
+  F(D) U = S U \epsilon, \label{eq:roothan-hall}
 \end{equation}
 and we are finished. This equation is called the Roothan--Hall
 equation.
 
+In terms of each column, i.e., each $\phi_p$,
+\begin{equation}
+  F(D) u_p = \epsilon_p S u_p . \label{eq:roothan-hall}
+\end{equation}
+
+
+
+\begin{exercise}\label{exercise:hf-normalization}
+  Prove that $U^HSU=I$ (the identity matrix) by using $\braket{\phi_p|\phi_q} =
+  \delta_{pq}$ and
+  \begin{equation}
+    \ket{\phi_p} \sum_q S_{qp} \ket{\chi_q}, \quad S_{qp} =
+    \braket{\chi_q|\chi_p}.
+  \end{equation}
+\end{exercise}
+
+
 \subsection{Self-consistent field iteration}
 
 How do we find self-consistent solutions of
-Eq.~\eqref{eq:hf-can-matrix}? The standard approach is by
+Eq.~\eqref{eq:roothan-hall}? The standard approach is by
 self-consistent field iteractions (SCF iterations), Finding hopefully
-better and better approximations $u_i^{(k)}$, $k=1,2,3,\cdot$, to the
-canonical HF functions , starting from a well-selected initial guess
+better and better approximations $u_i^{(k)}$, $k=1,2,3,\cdots$, to the
+canonical HF functions, starting from a well-selected initial guess
 $u_i^{(0)}$.
 
 Let $D^{(k)} = \sum_i u_i^{(k)} (u_i^{(k)})^H$ be the $k$'th
 iteration's density matrix. Then, the basic SCF iteration is to
 compute a complete set of orthonormal vectors
 \begin{equation}
-  F(D^{(k)}) u^{(k+1)}_p = \epsilon_p^{(k+1)} u_p^{(k+1)}
+  F(D^{(k)}) u^{(k+1)}_p = \epsilon_p^{(k+1)} S u_p^{(k+1)}
 \end{equation}
 by numerical diagonalization, sorting the eigenvalues
 $\epsilon_{p}^{(k+1)}$ in ascending order. Then, $p=1,\cdots,N$ gives the next
 approximation to the HF eigenpairs $(\phi_i,\epsilon_i)$, while the
-next $L-N$ form additional basis vectors to be used in, say, CI calculation.
+next $L-N$ form the additional canonical functions.
 
 If the SCF iteration converges, it often converges to a solution that
 corresponds to the true HF minimum wavefunction. Sometimes it does not
@@ -5136,23 +5309,11 @@ but this is out of scope for the present course. Read more aboud DIIS
 in Helgaker/J{\o}rgensen/Olsen \cite{HJO}, and see also \url{https://en.wikipedia.org/wiki/DIIS}.
 
 
-\begin{exercise} \note{To be completed}
-  Change-of-basis and second quantization.
+\subsection{Basis expansions in HF single-particle functions}
 
-  ...
-
-\end{exercise}
-
-\begin{exercise} \note{To be completed}
-  Second-quantization reformulation of HF equations that gives
-  Brillouin's Theorem directly as the stationary condition.
-\end{exercise}
-
-\subsection{The fluctuation potential}
-
-We have now established the canonical Hartree--Fock orbitals, that can
+We have now established the canonical Hartree--Fock single-particle functions, which can
 be used as a basis just like any other orthonormal basis. Each
-canonical orbital $\phi_p$ is associated with a creation operator
+canonical $\phi_p$ is associated with a creation operator
 $c_p^\dag$, and in terms of the \emph{original} basis $\{\chi_p\}$ we
 have for a two-body operator
 \begin{equation}
@@ -5165,14 +5326,19 @@ and
  \braket{p|\hat{h}|q} = h^p_q = \braket{\phi_p|\hat{h}|\phi_q} = \sum_{p'q'} U_{p'p}^*
   U_{q'q} \braket{\chi_{p'}|\hat{h}|\chi_{q'}},
 \end{equation}
-and similarly for any one-body operator.
+and similarly for any one-body operator. In a situation where HF
+single-particle functions are used in, say, a CI program, the matrix
+elements
+$\braket{\chi_{p'}\chi_{q'}|\hat{w}|\chi_{r'}\chi_{s'}}_{\text{(AS)}}$
+and $\braket{\chi_{p'}|\hat{h}|\chi_{q'}}$ will be produced by
+external codes. This is especially true in chemistry, where the
+computation of matrix elements is a business on its own.
 
- It is
-convenient to write the Hamiltonian on the following form
+It is convenient to write the Hamiltonian on the following form
 \begin{equation}
   \hat{H} = \hat{H}_0 + \hat{W} = \hat{F} + \hat{U},
 \end{equation}
-where the \emph{Fock operator} is given by
+where the second-quantized Fock operator is given by
 \begin{equation}
   \hat{F} = \sum_{i=1}^N \hat{f}(i) = \hat{H}_0 +
   \hat{V}^\text{direct} - \hat{V}^\text{exchange},
@@ -5217,15 +5383,16 @@ Similarly, for the the exchange potential we get
 \end{equation}
 This results in (using antisymmetrized matrix elements \eqref{eq:antisymm-elems-hf-inter})
 \begin{align}
-  \hat{F} &= \hat{H}_0 + \sum_{pq}\sum_i \braket{qi|\hat{w}|pi}
+  \hat{F} &= \hat{H}_0 + \sum_{pq}\sum_i \braket{qi|\hat{w}|pi}_\text{AS}
   c^\dag_q c_p \\
-  \hat{U} &= \hat{W} - \sum_{pq}\sum_i \braket{qi|\hat{w}|pi}
+  \hat{U} &= \hat{W} - \sum_{pq}\sum_i \braket{qi|\hat{w}|pi}_\text{AS}
   c^\dag_q c_p.  
 \end{align}
 
 Having dealt with the second-quantized form of the Hartree--Fock
 partitioned Hamiltonian, let us turn to the Slater determinants. Since
-the $c^\dag_p$ are creation operators for the canonical HF orbitals, a
+the $c^\dag_p$ are creation operators for the canonical HF
+single-particle functionss, a
 basis of Slater determinants can be taken to be the $\ket{p_1\cdots
   p_N}$, with $p_1<p_2<\cdots p_N$ as before. Alternatively, we can
 use the quasiparticle picture, and let the HF function be the
@@ -5236,45 +5403,89 @@ reference,
 all other Slater determinant basis functions can be written
 \begin{align}
   \ket{\Phi_i^a} &= c^\dag_a c_i \ket{\Phi_\text{HF}} = b^\dag_a
-  b^\dag_i \ket{\Phi_\text{HF}},\\
+  b^\dag_i \ket{\Phi},\\
   \ket{\Phi_{ij}^{ab}} &= c^\dag_b c_j c^\dag_a c_i
-  \ket{\Phi_\text{HF}} = b^\dag_b b^\dag_j b^\dag_a
-  b^\dag_i \ket{\Phi_\text{HF}},
+  \ket{\Phi} = b^\dag_b b^\dag_j b^\dag_a
+  b^\dag_i \ket{\Phi},
 \end{align}
 etc, where we have introduced the quasiparticle creation- and
 annihilation operators. 
 
 In quantum chemistry, it is \emph{standard} to start with the HF
-orbitals and perform corrections on top of that, such as CISD, giving
-rise to the term ``post-Hartree--Fock methods''.
+single-particle functions and perform corrections on top of that, such
+as CISD, giving rise to the term ``post-Hartree--Fock methods''.
 
 What is special about the HF reference, is of course that it is chosen
 to be optimize a certain aspect of the basis, namely that the
-reference state has minimal energy. This has an important consequence,
+reference state has minimal energy. This has a reformulation in terms
+of second-quantization,
 namely \emph{Brillouin's Theorem}:
 \begin{theorem}[Brillouin's Theorem]
-  Using HF single-particle basis,
-  \begin{equation}
+  Let an orthonormal single-particle basis $\{\phi_p\}$ be given, and
+  and assume that these satisfy the canonical HF equations. Then,
+  \begin{equation} \label{eq:hf-singles}
     \braket{\Phi_{i}^a|\hat{H}|\Phi} = 0,\qquad \forall i,a.
   \end{equation}
 \end{theorem}
 \begin{proof}
-  The Fock matrix is diagonal in the HF orbitals,
+  Assume that the HF equations are satisfied. Since $\hat{f}$ is
+  Hermitian, the single-particle basis functions are orthonormal. The
+  Fock matrix becomes diagonal,
   \begin{equation}
     f^{p}_q = h^p_q + \sum_j \braket{pj|\hat{w}|qj} = \delta_{pq}\epsilon_q.
   \end{equation}
-  In particular, the off-diagonal elements vanish,
+  In particular, 
   \begin{equation}
     f^{a}_i = h^q_i + \sum_j \braket{aj|\hat{w}|ij} = 0.
   \end{equation}
   But this is precisely (see the Slater--Condon rules from
   Exercise~\ref{exercise:slater-condon-rules}) the expression for 
-
   $\bra{\Phi_{i}^a}\hat{H}\ket{\Phi}$, which therefore must
-  vanish for all $i,a$. 
+  vanish for all $i,a$.
 \end{proof}
 
-\subsection{Normal-ordered Hamiltonian in HF basis}
+The converse of Brilloin's theorem is also true, in the sense that
+$f^a_i=0$ is equivalent to the \emph{non-canonical} HF
+equations. Recall that the HF state is the same for the non-canonical
+and canonical single-particle functions.
+\begin{theorem}[Converse of Brillouin's Theorem]\label{thm:brillouin-converse}
+  Let a single-particle basis be given. This basis satisfies
+  \begin{equation} \label{eq:hf-singles}
+    \braket{\Phi_{i}^a|\hat{H}|\Phi} = 0,\qquad \forall i,a
+  \end{equation}
+  if and only if the non-canonical HF equations are satified for the
+  occupied $\phi_i$, $i=1,\cdots,N$.
+\end{theorem}
+\begin{proof}
+  Since $f^i_a = (f_a^i)^* = 0$,
+  \begin{align}
+    \hat{f}\ket{\phi_i} &= \sum_p \braket{\phi_p|\hat{f}|\phi_i}\ket{\phi_p} =
+    \sum_j \braket{\phi_j|\hat{f}|\phi_i}\ket{\phi_j}\label{eq:ttt}0
+    , %\\
+    %\hat{h}\ket{\phi_a} &= \sum_p \braket{\phi_p|\hat{f}|\phi_a}
+    %\ket{\phi_p} = \sum_b \braket{\phi_b|\hat{f}|\phi_a} \ket{\phi_b}.
+  \end{align}
+  This is implies $\hat{f}\ket{\phi_i} = \sum_j
+  \lambda_{ji} \ket{\phi_i}$ with $\lambda_{ji} = f^j_i$, which are
+  the non-canonical HF equations. Conversely, assume that the
+  non-canonical HF equations are satisfied by the $\phi_i$,
+  \begin{align}
+    \hat{f}\ket{\phi_i} &= \sum_j \lambda_{ji} \ket{\phi_j}.
+  \end{align}
+  Forming the inner product with $\phi_j$, we otain $f^j_i =
+  \lambda_{ji}$, and Eq.~\eqref{eq:ttt} is satisfied.
+\end{proof}
+
+\subsection{Restricted Hartree--Fock for electronic systems (RHF)}
+
+\subsection{Unrestricted Hartree--Fock for electronic systems (UHF)}
+
+\subsection{The symmetry dilemma}
+
+\subsection{Hartree--Fock for the electron gas}
+
+
+\subsection{Normal-ordered Hamiltonian in HF basis (Not yet lectured)}
 
 Recall that for a two-body Hamiltonian $\hat{H} = \hat{H}_0 +
 \hat{W}$, the normal-ordered Hamiltonian (with respect to
@@ -5356,11 +5567,38 @@ This gives a considerable simplification, since
   normal-ordered operators.)
 \end{exercise}  
 
+\section{Perturbation theory for the ground-state (PT)} 
+\label{sec:perturbation-theory}
+
+\subsection{Rayleigh--Schr\"odinger perturbation theory (RSPT)}
+\label{sec:rspt}
+
+\subsection{M{\o}ller--Plesset perturbation theory (MPPT)}
+\label{sec:mppt}
+
+Hartree--Fock + PT.
+
+\chapter{Feynman diagrams for Rayleigh--Schr\"odinger perturbation
+  theory}
+\label{sec:feynman}
+
+
+\chapter{Coupled-cluster theory (CC)}
+\label{sec:cc}
+
+
+
 
 \appendix
 \chapter{Mathematical supplement}
+\label{ch:mathematical-supplement}
 
 \include{calculus-of-variations}
+
+%\chapter{Selected exersices and worked examples}
+
+%\include{slater-condon}
+
 
 
 \bibliographystyle{unsrt}
