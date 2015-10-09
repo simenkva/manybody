@@ -5844,6 +5844,389 @@ This gives a considerable simplification, since
 \subsection{Rayleigh--Schr\"odinger perturbation theory (RSPT)}
 \label{sec:rspt}
 
+Perturbation theory is a powerful method for systematic improvement of
+a model wavefunction. We can for the moment ``forget'' everything we know about
+second quantization, Slater determinants, quasiparticles, etc: PT is a
+generic theory applicable to all matrix problems.
+
+Supporting material: Szabo and Ostlund; Bartlett and Shavitt;
+Helgaker, J{\o}rgensen and Olsen.
+
+Suppose we have a Hamiltonian $H$ for which we seek eigenfunctions and
+eigenvalues,
+\begin{equation}
+  \hat{H} \ket{\Psi_k} = E_k \ket{\Psi_k}.
+\end{equation}
+The idea is to partition the Hamiltonian into a
+part that we can ``solve'' and a perturbation $\hat{V}$,
+\begin{equation}
+  \hat{H} = \hat{H}_0 + \hat{V}.
+\end{equation}
+The operator $\hat{H}_0$ is ``solved'', in the sense that we know its
+complete set of eigenfunctions,
+\begin{equation}
+  \hat{H}_0 \ket{\Phi_k} = \epsilon_k \ket{\Phi_k}. \label{eq:se-unpert}
+\end{equation}
+The set $\{\ket{\Phi_k}\}$ is an orthonormal basis for Hilbert space,
+and we should, in principle, be able to express the exact eigenvectors
+and (and therefore the eigenvalues) in terms of the this basis and
+$\hat{V}$.
+
+In perturbation theory, we seek such an expression in terms of
+\emph{power series in the perturbation $\hat{V}$}. We introduce an
+\emph{order parameter} $\lambda$ and write
+\begin{equation}
+  \hat{H}_\lambda = \hat{H}_0 + \lambda \hat{V},
+\end{equation}
+i.e., $\hat{H} = \hat{H}_1$ is the full Hamiltonian. It is not
+unreasonable to assume that the eigenvalues and eigenvectors of
+$\hat{H}_\lambda$ become smooth functions of $\lambda$, at least for
+$\lambda$ sufficiently small.
+
+The Schr\"odinger equation for $\hat{H}(\lambda)$ reads
+\begin{equation}
+  \hat{H}_\lambda \ket{\Psi_k (\lambda)} = E_k(\lambda)
+  \ket{\Psi_k(\lambda)}.
+\end{equation}
+We now assume that we can expand the
+eigenvectors and eigenvalues in \emph{power series} around $\lambda =
+0$.
+\begin{subequations}
+  \label{eq:rspt-exps}
+  \begin{align}
+    \ket{\Psi_k(\lambda)} &= \sum_{n=0}^\infty
+    \ket{\Psi_k^{(n)}} \lambda^n \label{eq:rspt-psi} \\
+    E_k(\lambda) &= \sum_{n=0}^\infty
+    E_k^{(n)} \lambda^n.\label{eq:rspt-e}
+  \end{align}
+\end{subequations}
+The unperturbed problem is obtained at $\lambda=0$: $\ket{\Psi_k(0)} =
+\ket{\Phi_k} = \ket{\Psi_k^{(0)}}$ and $E_k(0) = \epsilon_k$, and the full problem at
+$\lambda=1$: $\ket{\Psi_k(1)} = \ket{\Psi_k}$, and $E_k(1) = E_k$.
+
+We now seek the perturbation corrections $E_k^{(n)}$ and
+$\ket{\Psi_k^{(n)}}$. This is done by plugging
+Eqs.~\eqref{eq:rspt-exps} into the Schr\"odinger equation. This gives
+\begin{equation}
+  (\hat{H}_0 + \lambda \hat{V}) \sum_{n=0}^\infty
+  \ket{\Psi_k^{(n)}}\lambda^n = \left(\sum_{n=0}^\infty
+    E_k^{(n)}\lambda^n\right) \sum_{m=0}^\infty \ket{\Psi_k^{(m)}}\lambda^m.
+\end{equation}
+For this equation to hold \emph{for all $\lambda$}, it must hold
+order-by-order. The $\lambda^0$-part of the equation is simply
+Eq.~\eqref{eq:se-unpert}. The $n$'th order equation is
+\begin{equation}
+  \hat{H}_0 \ket{\Psi_k^{(n)}} + \hat{V} \ket{\Psi_k^{(n-1)}} =
+  \sum_{j=0}^n E_k^{(j)} \ket{\Psi_k^{(n-j)}}, \quad n > 0. \label{eq:rspt-nth}
+\end{equation}
+
+The solution $\ket{\Psi_k(\lambda)}$ to the Schr\"odinger equation is not
+unique. By scaling it we obtain a new solution. Thus, in order to
+write $\ket{\Psi_k(\lambda)}$ as a smooth function of $\lambda$, we need to select one
+particular normalization for each $\lambda$. We obtain particularly simple expressions
+using \emph{intermediate normalization}:
+\begin{equation}
+  \braket{\Phi_k|\Psi_k(\lambda)} = 1.
+\end{equation}
+Inserting the power series for $\ket{\Psi_k(\lambda)}$ we obtain
+\begin{equation}
+  1 =   \braket{\Phi_k|\Psi_k(\lambda)} = 1 + \lambda \ket{\Psi_k^{(1)}}
+   + \lambda^2 \ket{\Psi_k^{(2)}} + \cdots,
+\end{equation}
+Since this expression is to hold for all $\lambda$, it must hold
+order-by-order, which gives
+\begin{equation}
+  \braket{\Phi_k|\Psi_k^{(n)}} = 0, \quad \forall n\geq 1, \label{eq:in}
+\end{equation}
+i.e., \emph{all} the higher-order corrections are orthogonal to the
+unperturbed vector $\ket{\Phi_k}$.
+
+We now use Eq.~\eqref{eq:in} and project Eq.~\eqref{eq:rspt-nth} onto
+$\ket{\Phi_k}$ to obtain
+\begin{equation}
+  \braket{\Phi_k|\hat{V}|\Psi_k^{(n-1)}} = E_k^{(n)},
+\end{equation}
+which is an expression for the $n$-th order energy perturbation in
+terms of the $n-1$-th order correction in the wavefunction. In
+particular,
+\begin{equation}
+  E_k^{(1)} = \braket{\Phi_k|\hat{V}|\Phi_k}.
+\end{equation}
+If we can find an expression for $\ket{\Psi_k^{(n)}}$ in terms of
+$\ket{\Psi_k^{(j)}}$, $j < n$, then we have a recursive procedure for
+determining all the perturbation corrections.
+
+To this end, rearrange Eq.~\eqref{eq:rspt-nth} as
+\begin{equation}
+  (\epsilon_k - \hat{H}_0 )\ket{\Psi_k^{(n)}} = \hat{V}
+  \ket{\Psi_k^{(n-1)}} - \sum_{j=0}^{n-1}
+  E_k^{(n-j)} \ket{\Psi_k^{(j)}}. \label{eq:rspt-nth2}
+\end{equation}
+On the right-hand side we only have wavefunction corrections of order
+less than $n$. We also know that the $E_k^{(n)}$, which occurs on the
+right-hand side, is a function of $\ket{\Psi_k^{(n-1)}}$, so if we can
+somehow invert $\epsilon_k - \hat{H}_0$ then we have an expression for
+$\ket{\Psi_k^{(n)}}$ in terms of lower-order corrections only.
+
+Let $\hat{P} = \ket{\Phi_k}\ket{\Phi_k}$, the projection operator onto
+the unperturbed eigenvector. Let $\hat{Q} = 1 - \hat{P}$, which is
+then the projector onto the subspace spanned by all the other
+$\ket{\Phi_j}$, $j\neq k$:
+\begin{equation}
+  \hat{Q} = \sum_{j\neq k} \ket{\Phi_j}\ket{\Phi_j}.
+\end{equation}
+We know that for $n>0$,
+\begin{equation}
+  \ket{\Psi_k^{(n)}} = \hat{P}\ket{\Psi_k^{(n)}} + \hat{Q}
+  \ket{\Psi_k^{(n)}} = \hat{Q}\ket{\Psi_k^{(n)}}
+\end{equation}
+by the intermediate normalization. Moreover,
+\begin{equation}
+  [\hat{H}_0,\hat{Q}] = 0,
+\end{equation}
+since the $\ket{\Phi_j}$ are eigenfunctions of $\hat{H}_0$. Acting
+on Eq.~\eqref{eq:rspt-nth2} with $\hat{Q}$ we then obtain
+\begin{equation}
+  (\epsilon_k - \hat{H}_0) \hat{Q}\ket{\Psi_k^{(n)}} = 
+  \hat{Q}\hat{V} \ket{\Psi_k^{(n-1)}} - \sum_{j=1}^{n-1} E_k^{(n-j)} \hat{Q}\ket{\Psi_k^{(j)}},
+\end{equation}
+where we remark that the $j=0$-term from the sum on the right-hand
+side is eliminated.
+We have
+\begin{equation}
+  \epsilon_k - \hat{H}_0 = \sum_{j\neq k} (\epsilon_k -
+  \epsilon_j)\ket{\Phi_j}\bra{\Phi_j} = \hat{Q}(\epsilon_k - \hat{H}_0)\hat{Q},
+\end{equation}
+i.e., the operator acts only within the space orthogonal to $\ket{\Phi_k}$.
+Define the operator
+\begin{equation}
+  \hat{R} = \hat{Q}\hat{R}\hat{Q} = \sum_{j\neq k} \frac{1}{\epsilon_j - \epsilon_k}
+  \ket{\Phi_j}\bra{\Phi_j} .
+\end{equation}
+It is important to note that we must \emph{here assume that the unperturbed
+  eigenvalue $\epsilon_k$ is non-degenerate}. Otherwise there are
+infinite terms in the sum. Now,
+for every $\ket{u} = \ket{Q}\ket{u}$ (such as
+$\ket{\Psi_k^{(n)}}$) we have
+\begin{equation}
+  \hat{R} (\epsilon_k - \hat{H}_0)\ket{u} = \ket{u}.
+\end{equation}
+The operator $\hat{R}$ is called a \emph{pseudoinverse}, and since
+$\hat{R} = \hat{Q} \hat{R}\hat{Q}$ it is
+common to write
+\begin{equation}
+  \hat{R} = \frac{\hat{Q}}{\epsilon_k - \hat{H}_0},
+\end{equation}
+even though the fraction notation for matrices and operators is in general not sound.
+Acting with
+$\hat{R}$ on Eq.~\eqref{eq:rspt-nth2}, we obtain
+\begin{equation}
+  \ket{\Psi_k^{(n)}} = \frac{\hat{Q}}{\epsilon_k - \hat{H}_0 } \left[
+    \hat{V} \ket{\Psi_k^{(n-1)}} - \sum_{j=1}^{n-1} E_k^{(n-j)}
+    \ket{\Psi_k^{(j)}} \right].
+\end{equation}
+We summarize as a theorem:
+\begin{theorem}[Non-degenerate Rayleigh--Schr\"odinger Perturbation Theory]
+  \label{thm:rspt}
+  Let $\hat{H} = \hat{H}_0 + \lambda \hat{V}$ be given, and assume
+  that
+  \begin{equation}
+    \hat{H}_0 \ket{\Phi_k} = \epsilon_k \ket{\Phi_k}
+  \end{equation}
+  where the eigenvectors for a complete basis. Let
+  \begin{equation}
+    (\hat{H}_0 + \lambda \hat{V}) \ket{\Psi_k(\lambda)} = E_k(\lambda)
+    \ket{\Psi_k(\lambda)}, \quad \braket{\Phi_k|\Psi_k(\lambda)} = 1,
+  \end{equation}
+  for a given $k$, and assume that $\epsilon_k$ is a non-degenerate
+  eigenvalue for $\hat{H}_0$. Assume furthermore, that $E_k(\lambda)$
+  and $\ket{\Psi_k(\lambda)}$ are analytic in a neighborhood of
+  $\lambda = 0$,
+  \begin{align}
+    E_k(\lambda) = \sum_{n=0}^\infty E_k^{(n)}\lambda^n\\
+    \ket{\Psi_k(\lambda)} = \sum_{n=0}^\infty \ket{\Psi_k^{(n)}}\lambda^n.
+  \end{align}
+  Then the $n$-th order corrections are given recursively in terms
+  of the $j<n$-th order corrections via the formulae
+  \begin{align}
+    E_k^{(n)} &= \braket{\Phi_k|\hat{V}|\Psi_k^{(n-1)}} \\
+    \ket{\Psi_k^{(n)}} &=  \frac{\hat{Q}}{\epsilon_k - \hat{H}_0} \left[
+      \hat{V} \ket{\Psi_k^{(n-1)}} - \sum_{j=1}^{n-1} E_k^{(n-j)}
+      \ket{\Psi_k^{(j)}} \right].
+  \end{align}
+\end{theorem}
+
+
+\subsection{Low-order RSPT}
+
+Theorem~\ref{thm:rspt} gives a recursive procedure for the $n$-th
+order corrections of the energies and wavefunctions. We now consider
+the explicit expressions up to $n=3$.
+
+For notational simplicity, we omit the subscript $k$ in the
+following, and write $\epsilon \equiv \epsilon_k$ for the unperturbed
+energy, $\ket{\Phi}=\equiv\ket{\Phi_k}$ for the unperturbed
+wavefunction, etc.
+
+The first-order correction to the energy is simple,
+\begin{equation}
+  E^{(1)} = \braket{\Phi|\hat{V}|\Phi}.
+\end{equation}
+For $E^{(2)}$ we need the first-order wavefuncton correction,
+\begin{equation}
+  \ket{\Psi^{(1)}} = \frac{\hat{Q}}{\epsilon-\hat{H}_0} \hat{V} \ket{\Phi},
+\end{equation}
+which then gives
+\begin{equation}
+  E^{(2)} = \braket{\Phi|\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0} \hat{V} |\Phi}.
+\end{equation}
+For $E^{(3)}$ we need the second-order wavefunction correction,
+\begin{equation}
+  \ket{\Psi^{(2)}} = \frac{\hat{Q}}{\epsilon-\hat{H}_0} [\hat{V} -
+  \braket{\Phi|\hat{V}|\Phi}] \frac{\hat{Q}}{\epsilon - \hat{H}_0}
+  \hat{V} \ket{\Phi}. \label{eq:second-order-psi}
+\end{equation}
+This gives
+\begin{equation}
+  \begin{split}
+    E^{(3)} &= \bra{\Phi}\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0}
+    [\hat{V} - \braket{\Phi|\hat{V}|\Phi}] \frac{\hat{Q}}{\epsilon -
+      \hat{H}_0} \hat{V} \ket{\Phi} 
+    \\
+    &= \bra{\Phi}\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0} \hat{V}
+    \frac{\hat{Q}}{\epsilon - \hat{H}_0} \hat{V} \ket{\Phi} -
+    \braket{\Phi|\hat{V}|\Phi}
+    \bra{\Phi}\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0}
+    \frac{\hat{Q}}{\epsilon - \hat{H}_0} \hat{V}
+    \ket{\Phi} 
+    \label{eq:third-order-e}
+  \end{split}   
+\end{equation}
+Comparing $E^{(1)}$, $E^{(2)}$, and $E^{(3)}$, we see that the
+third-order term differ from the pattern. When we discuss diagrams,
+the second term of $E^{(3)}$ is referred to as an unlinked
+term. Higher order corrections obtain more and more such terms. [They
+can be systematically generated from the first term
+$\braket{\Phi|\hat{V}\hat{R}\cdots\hat{R}\hat{V}|\Phi}$ a procedure called the
+``bracketing procedure'', see Paldus and Cizek. This is, however, out
+of scope for the current course.]
+
+\begin{exercise}
+  Prove Eq.~\eqref{eq:second-order-psi}
+\end{exercise}
+
+\begin{exercise}
+  Derive the fourth and fift order perturbation theory corrections to
+  the energy.
+\end{exercise}
+
+\subsection{A two-state example}
+
+It is instructive to consider a two-state example, since we can
+diagonalize it exactly and obtain closed-form expressions. The
+behavior of the perturbation series can then be considered.
+
+Let
+\begin{equation}
+  H_0 = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}, \quad
+  V = \begin{pmatrix} 0 & \epsilon \\ \epsilon & 0 \end{pmatrix},
+\end{equation}
+so that
+\begin{equation}
+  H(\lambda) = \begin{pmatrix} -1 & \lambda\epsilon \\ \lambda\epsilon
+    & 1 \end{pmatrix}.
+\end{equation}
+The exact eigenvalues of $H(\lambda)$ are given by the roots of the polynomial
+\begin{equation}
+  \det(H(\lambda) - eI) = (-1-e)(1-e) - (\lambda\epsilon)^2 =
+  -(1+e)(1-e) - (\lambda\epsilon)^2.
+\end{equation}
+Solving, we find the two roots
+\begin{equation}
+  e_{\pm} = \pm [1  + (\lambda\epsilon)^2]^{1/2}.
+\end{equation}
+As functions of $\lambda$, see Fig.~\ref{fig:twostate}. Note well,
+that our calculations are also true for \emph{complex} $\lambda$, only
+that $e_\pm$ are no longer real, but complex roots in general.
+
+In RSPT, we would seek the Taylor series of, say, $e_-(\lambda)$
+around $\lambda=0$. Since we have a closed-form expression we can
+compute this series. The first three terms are
+\begin{equation}
+  e_-(\lambda) = e_-(0) + \lambda e'_-(0) + \frac{1}{2}\lambda^2 e_-''(0)
+  + O(\lambda^3).
+\end{equation}
+Explicit evaluation of the derivatives:
+\begin{align}
+  e_-'(\lambda) &= -[1 + (\lambda\epsilon)^2]^{-1/2} \lambda\epsilon^2 \\
+  e_-''(\lambda) &= [1 + (\lambda\epsilon)^2]^{-3/2}
+  (\lambda\epsilon^2)^2 - [1 + (\lambda\epsilon)^2]^{-1/2} \epsilon^2
+\end{align}
+We obtain the Taylor series (with a few extra terms obtained by
+computer algebra)
+\begin{equation}
+  e_-(\lambda) = -1 - \frac{1}{2}(\lambda\epsilon)^2 +
+  \frac{1}{8}(\lambda\epsilon)^4 - \frac{1}{26}(\lambda\epsilon)^6  +
+  \frac{5}{128} (\lambda\epsilon)^8 + O(\lambda^{10}).
+\end{equation}
+
+A natural question arises: does the series \emph{converge}? Does it
+converge for our desired parameter value $\lambda=1$? Well, our
+function has a \emph{branch-point singularity} since it is a
+square-root function.  The branch-point singularity arises when the
+two roots coincide in the complex plane, at $\lambda = \pm
+i/\epsilon$. At these points the eigenvalue functions are no longer
+analytic. The Taylor series only converges in a disc around
+$\lambda=0$ that does not contain the singularity. Thus, the Taylor
+series will only converge within the circle $|\lambda|<1/|\epsilon|$,
+i.e., it will converge for $\lambda=1$ only if $|\epsilon| < 1$.
+
+Thus, we see directly that the strength of the perturbation may affect
+the convergence properties of the perturbation series.
+
+The points $\lambda = \pm i/\epsilon$ are called \emph{avoided
+  crossings} since, if the parameter $\lambda$ is real, it ``narrowly
+misses'' the branch-point and hence an exact crossing. Often, in
+eigenvalue plots, one can see the function behaviour $\pm [a+(\epsilon
+\lambda)^2]^{1/2}$, indicating an avoided crossing and hence a
+singluarity located approximately at this $\lambda$-value.
+
+For an $n$-state problem, each of the $n$ eigenvalues may collide with
+$n-1$ eigenvalues (again for complex $\lambda$ in general), giving
+quite a lot of possible branch points, and thus many
+singularities. Determining whether the RSPT series converges is thus
+a virtually impossible task for many-body calculations. Still, a few
+terms may still give a good approximation.
+
+
+
+
+
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[->] (-4,0)--(4,0) node[anchor=west] {$\lambda$};
+      \draw[->] (0,-4)--(0,4) node[anchor=south] {$e_\pm$};
+
+      \draw[dashed,red] (1,-4) node[anchor=north] {$\lambda=1$} --(1,4);
+      \draw[scale=1,domain=-3:3,smooth,variable=\x,blue] plot ({\x},{sqrt(\x*\x+1)});
+      \draw[scale=1,domain=-3:3,smooth,variable=\x,blue] plot ({\x},{-sqrt(\x*\x+1)});
+    \end{tikzpicture}
+  \end{center}
+  \caption{The eigenvalues of a two-state problem, as function of the
+    perturbation parameter $\lambda$. Here, $\epsilon =
+    1$.\label{fig:twostate}}
+\end{figure}
+% Two-state example
+
+%Normal-ordering of operators
+
+%Generalized Wick's Theorem
+
+
+
+
 \subsection{M{\o}ller--Plesset perturbation theory (MPPT)}
 \label{sec:mppt}
 
