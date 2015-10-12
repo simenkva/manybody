@@ -5841,7 +5841,7 @@ This gives a considerable simplification, since
 \section{Perturbation theory for the ground-state (PT)} 
 \label{sec:perturbation-theory}
 
-\subsection{Rayleigh--Schr\"odinger perturbation theory (RSPT)}
+\subsection{Non-degenerate Rayleigh--Schr\"odinger perturbation theory (RSPT)}
 \label{sec:rspt}
 
 Perturbation theory is a powerful method for systematic improvement of
@@ -5852,7 +5852,7 @@ generic theory applicable to all matrix problems.
 Supporting material: Szabo and Ostlund; Bartlett and Shavitt;
 Helgaker, J{\o}rgensen and Olsen.
 
-Suppose we have a Hamiltonian $H$ for which we seek eigenfunctions and
+Suppose we have a Hamiltonian $\hat{H}$ for which we seek eigenfunctions and
 eigenvalues,
 \begin{equation}
   \hat{H} \ket{\Psi_k} = E_k \ket{\Psi_k}.
@@ -5862,13 +5862,16 @@ part that we can ``solve'' and a perturbation $\hat{V}$,
 \begin{equation}
   \hat{H} = \hat{H}_0 + \hat{V}.
 \end{equation}
-The operator $\hat{H}_0$ is ``solved'', in the sense that we know its
-complete set of eigenfunctions,
+The operator $\hat{H}_0$ is ``solved'', in the sense that we we assume
+knowledge of all its
+eigenfunctions and eigenvalues,
 \begin{equation}
   \hat{H}_0 \ket{\Phi_k} = \epsilon_k \ket{\Phi_k}. \label{eq:se-unpert}
 \end{equation}
-The set $\{\ket{\Phi_k}\}$ is an orthonormal basis for Hilbert space,
-and we should, in principle, be able to express the exact eigenvectors
+The set $\{\ket{\Phi_k}\}$ is assumed to be an orthonormal basis for
+Hilbert space (this is true for all finite-dimensional cases, and for
+many infinite-dimensional ones).
+We should, in principle, be able to express the exact eigenvectors
 and (and therefore the eigenvalues) in terms of the this basis and
 $\hat{V}$.
 
@@ -5881,7 +5884,7 @@ In perturbation theory, we seek such an expression in terms of
 i.e., $\hat{H} = \hat{H}_1$ is the full Hamiltonian. It is not
 unreasonable to assume that the eigenvalues and eigenvectors of
 $\hat{H}_\lambda$ become smooth functions of $\lambda$, at least for
-$\lambda$ sufficiently small.
+$\lambda$ sufficiently small and/or sufficiently weak perturbations $\hat{V}$.
 
 The Schr\"odinger equation for $\hat{H}(\lambda)$ reads
 \begin{equation}
@@ -5904,7 +5907,11 @@ The unperturbed problem is obtained at $\lambda=0$: $\ket{\Psi_k(0)} =
 \ket{\Phi_k} = \ket{\Psi_k^{(0)}}$ and $E_k(0) = \epsilon_k$, and the full problem at
 $\lambda=1$: $\ket{\Psi_k(1)} = \ket{\Psi_k}$, and $E_k(1) = E_k$.
 
-We now seek the perturbation corrections $E_k^{(n)}$ and
+The assumption that $\ket{\Psi_k(\lambda)}$ is differentiable at
+$\lambda=0$ is assured by requiring $\epsilon_k$ to be
+\emph{non-degenerate}. 
+
+We now derive formulas for the perturbation corrections $E_k^{(n)}$ and
 $\ket{\Psi_k^{(n)}}$. This is done by plugging
 Eqs.~\eqref{eq:rspt-exps} into the Schr\"odinger equation. This gives
 \begin{equation}
@@ -5968,26 +5975,25 @@ right-hand side, is a function of $\ket{\Psi_k^{(n-1)}}$, so if we can
 somehow invert $\epsilon_k - \hat{H}_0$ then we have an expression for
 $\ket{\Psi_k^{(n)}}$ in terms of lower-order corrections only.
 
-Let $\hat{P} = \ket{\Phi_k}\ket{\Phi_k}$, the projection operator onto
+Let $\hat{P} = \ket{\Phi_k}\bra{\Phi_k}$, the projection operator onto
 the unperturbed eigenvector. Let $\hat{Q} = 1 - \hat{P}$, which is
 then the projector onto the subspace spanned by all the other
 $\ket{\Phi_j}$, $j\neq k$:
 \begin{equation}
-  \hat{Q} = \sum_{j\neq k} \ket{\Phi_j}\ket{\Phi_j}.
+  \hat{Q} = \sum_{j\neq k} \ket{\Phi_j}\bra{\Phi_j}.
 \end{equation}
-We know that for $n>0$,
+Intermediate normalization can now be written
 \begin{equation}
-  \ket{\Psi_k^{(n)}} = \hat{P}\ket{\Psi_k^{(n)}} + \hat{Q}
-  \ket{\Psi_k^{(n)}} = \hat{Q}\ket{\Psi_k^{(n)}}
+  \ket{\Psi_k^{(n)}} = \hat{Q}\ket{\Psi_k^{(n)}}, \quad n \geq 1.
 \end{equation}
-by the intermediate normalization. Moreover,
+Moreover,
 \begin{equation}
   [\hat{H}_0,\hat{Q}] = 0,
 \end{equation}
 since the $\ket{\Phi_j}$ are eigenfunctions of $\hat{H}_0$. Acting
 on Eq.~\eqref{eq:rspt-nth2} with $\hat{Q}$ we then obtain
 \begin{equation}
-  (\epsilon_k - \hat{H}_0) \hat{Q}\ket{\Psi_k^{(n)}} = 
+  (\epsilon_k - \hat{H}_0)\hat{Q}\ket{\Psi_k^{(n)}} = 
   \hat{Q}\hat{V} \ket{\Psi_k^{(n-1)}} - \sum_{j=1}^{n-1} E_k^{(n-j)} \hat{Q}\ket{\Psi_k^{(j)}},
 \end{equation}
 where we remark that the $j=0$-term from the sum on the right-hand
@@ -5997,16 +6003,17 @@ We have
   \epsilon_k - \hat{H}_0 = \sum_{j\neq k} (\epsilon_k -
   \epsilon_j)\ket{\Phi_j}\bra{\Phi_j} = \hat{Q}(\epsilon_k - \hat{H}_0)\hat{Q},
 \end{equation}
-i.e., the operator acts only within the space orthogonal to $\ket{\Phi_k}$.
+i.e., the operator acts only within the space orthogonal to
+$\ket{\Phi_k}$. (Here, we use the non-degeneracy assumption.)
 Define the operator
 \begin{equation}
-  \hat{R} = \hat{Q}\hat{R}\hat{Q} = \sum_{j\neq k} \frac{1}{\epsilon_j - \epsilon_k}
+  \hat{R} = \hat{Q}\hat{R}\hat{Q} = \sum_{j, \;j\neq k} \frac{1}{\epsilon_k - \epsilon_j}
   \ket{\Phi_j}\bra{\Phi_j} .
 \end{equation}
 It is important to note that we must \emph{here assume that the unperturbed
   eigenvalue $\epsilon_k$ is non-degenerate}. Otherwise there are
 infinite terms in the sum. Now,
-for every $\ket{u} = \ket{Q}\ket{u}$ (such as
+for every $\ket{u} = \hat{Q}\ket{u}$ (such as
 $\ket{\Psi_k^{(n)}}$) we have
 \begin{equation}
   \hat{R} (\epsilon_k - \hat{H}_0)\ket{u} = \ket{u}.
@@ -6017,7 +6024,9 @@ common to write
 \begin{equation}
   \hat{R} = \frac{\hat{Q}}{\epsilon_k - \hat{H}_0},
 \end{equation}
-even though the fraction notation for matrices and operators is in general not sound.
+even though the fraction notation for matrices and operators is 
+something to be careful with. $\hat{R}$ is also called the
+\emph{resolvent of $\hat{H}_0$}.
 Acting with
 $\hat{R}$ on Eq.~\eqref{eq:rspt-nth2}, we obtain
 \begin{equation}
@@ -6065,8 +6074,9 @@ the explicit expressions up to $n=3$.
 
 For notational simplicity, we omit the subscript $k$ in the
 following, and write $\epsilon \equiv \epsilon_k$ for the unperturbed
-energy, $\ket{\Phi}=\equiv\ket{\Phi_k}$ for the unperturbed
-wavefunction, etc.
+energy, $\ket{\Phi}\equiv\ket{\Phi_k}$ for the unperturbed
+wavefunction, etc. We use $\hat{R}$ for the resolvent (which also
+depends on $k$).
 
 The first-order correction to the energy is simple,
 \begin{equation}
@@ -6074,50 +6084,98 @@ The first-order correction to the energy is simple,
 \end{equation}
 For $E^{(2)}$ we need the first-order wavefuncton correction,
 \begin{equation}
-  \ket{\Psi^{(1)}} = \frac{\hat{Q}}{\epsilon-\hat{H}_0} \hat{V} \ket{\Phi},
+  \ket{\Psi^{(1)}} = \hat{R} \hat{V} \ket{\Phi},
 \end{equation}
 which then gives
 \begin{equation}
-  E^{(2)} = \braket{\Phi|\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0} \hat{V} |\Phi}.
+  E^{(2)} = \braket{\Phi|\hat{V}\hat{R}\hat{V} |\Phi} = \sum_{j, j\neq
+    k} \frac{|\braket{\Phi_k|\hat{V}|\Phi_j}|^2}{\epsilon_k - \epsilon_j},
 \end{equation}
+which is a familiar expression for second-order perturbation theory.
 For $E^{(3)}$ we need the second-order wavefunction correction,
 \begin{equation}
-  \ket{\Psi^{(2)}} = \frac{\hat{Q}}{\epsilon-\hat{H}_0} [\hat{V} -
-  \braket{\Phi|\hat{V}|\Phi}] \frac{\hat{Q}}{\epsilon - \hat{H}_0}
+  \ket{\Psi^{(2)}} = \hat{R} [\hat{V} -
+  \braket{\Phi|\hat{V}|\Phi}] \hat{R}
   \hat{V} \ket{\Phi}. \label{eq:second-order-psi}
 \end{equation}
 This gives
 \begin{equation}
   \begin{split}
-    E^{(3)} &= \bra{\Phi}\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0}
-    [\hat{V} - \braket{\Phi|\hat{V}|\Phi}] \frac{\hat{Q}}{\epsilon -
-      \hat{H}_0} \hat{V} \ket{\Phi} 
+    E^{(3)} &= \bra{\Phi}\hat{V}\hat{R}
+    [\hat{V} - \braket{\Phi|\hat{V}|\Phi}] \hat{R} \hat{V} \ket{\Phi} 
     \\
-    &= \bra{\Phi}\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0} \hat{V}
-    \frac{\hat{Q}}{\epsilon - \hat{H}_0} \hat{V} \ket{\Phi} -
+    &= \bra{\Phi}\hat{V}\hat{R} \hat{V}
+    \hat{R} \hat{V} \ket{\Phi} -
     \braket{\Phi|\hat{V}|\Phi}
-    \bra{\Phi}\hat{V}\frac{\hat{Q}}{\epsilon-\hat{H}_0}
-    \frac{\hat{Q}}{\epsilon - \hat{H}_0} \hat{V}
+    \bra{\Phi}\hat{V}\hat{R}^2 \hat{V}
     \ket{\Phi} 
     \label{eq:third-order-e}
   \end{split}   
 \end{equation}
-Comparing $E^{(1)}$, $E^{(2)}$, and $E^{(3)}$, we see that the
-third-order term differ from the pattern. When we discuss diagrams,
+Comparing $E^{(1)}$, and $E^{(2)}$, we notice a pattern, but that for $E^{(3)}$, we see that the
+pattern becomes more complicated: there is a leading term on the form
+\begin{equation}
+  E^{(k)}_\text{leading} =
+  \underbrace{\braket{\Phi|\hat{V}\hat{R}\hat{V}\hat{R}\cdots\hat{V}|\Phi}}_{\text{$n$
+      factors $\hat{V}$, $n-1$ farctors $\hat{R}$}},
+\end{equation}
+but then there are terms arising from
+\begin{equation}
+  E^{(j)}\braket{\Psi^{(n-1)}|\Psi^{(n-j)}} = E^{(j)} \braket{\Phi|\hat{V}
+    \operatorname{monomial}(\hat{R},\hat{V}) \hat{V}|\Phi},
+\end{equation}
+where the monomial is a product of in total $n-j-2$ operators $\hat{V}$,
+and several $\hat{R}$s, in some order.
+
+We will not consider the perturbation series furthere here (see
+Exercise~\ref{exercise:pt-higher}). However, 
+when we discuss diagrams,
 the second term of $E^{(3)}$ is referred to as an unlinked
-term. Higher order corrections obtain more and more such terms. [They
-can be systematically generated from the first term
-$\braket{\Phi|\hat{V}\hat{R}\cdots\hat{R}\hat{V}|\Phi}$ a procedure called the
-``bracketing procedure'', see Paldus and Cizek. This is, however, out
-of scope for the current course.]
+term. Higher order corrections obtain more and more such terms. They
+can be systematically generated from $E^{(n)}_\text{leading}$ by  a procedure called the
+``bracketing procedure'', see Paldus and Cizek \cite{PaldusCizek} in
+the supporting material for more details. 
+
+The $n$th order energy $E^{(n)}$ can be written as the leading term
+plus terms generated by inserting $\langle \; \; \rangle$ around one
+or more $\hat{V}$s, except for the outer ones, in any possible way, in
+any number. They may also be nested. The bra(c)ket represents an
+expectation value with $\ket{\Psi}$. The sign of each term is
+$(-1)^j$, where $j$ is the number of brackets in the term. 
+For example, for $n=3$ there is
+one possibility:
+\begin{equation}
+  \braket{\Phi|\hat{V}\hat{R}\braket{\hat{V}}\hat{R}\hat{V}|\Phi} =
+  - \braket{\Phi|\hat{V}\hat|\Phi}
+  \braket{\Phi|\hat{V}\hat{R}^2\hat{V}|\Phi},
+\end{equation}
+which reproduces $E^{(3)}$. For $n=4$ we have the possibilities
+\begin{subequations}
+  \begin{align}
+    \braket{\Phi|\hat{V}\hat{R}\langle\hat{V}\rangle\hat{R}\hat{V}\hat{R}\hat{V}|\Phi}
+    &= - \braket{\Phi|\hat{V}|\Phi} \braket{\Phi|\hat{V}\hat{R}^2
+      \hat{V}\hat{R}\hat{V}|\Phi} \\
+    \braket{\Phi|\hat{V}\hat{R}\hat{V}\hat{R}\langle\hat{V}\rangle\hat{R}\hat{V}|\Phi}
+    &= - \braket{\Phi|\hat{V}|\Phi} \braket{\Phi|\hat{V}\hat{R}
+      \hat{V}\hat{R}^2\hat{V}|\Phi} \\
+    \braket{\Phi|\hat{V}\hat{R}\langle\hat{V}\rangle\hat{R}\langle\hat{V}\rangle\hat{R}\hat{V}|\Phi}
+    &= \braket{\Phi|\hat{V}|\Phi}^2
+    \braket{\Phi|\hat{V}\hat{R}^3\hat{V}|\Phi} \\ 
+    \braket{\Phi|\hat{V}\hat{R}\langle\hat{V}\hat{R}\hat{V}\rangle\hat{R}\hat{V}|\Phi}
+    &= -\braket{\Phi|\hat{V}\hat{R}\hat{V}|\Phi}\braket{\Phi|\hat{V}\hat{R}^2\hat{V}|\Phi}.
+  \end{align}
+\end{subequations}
+In higher order energies, one even gets brackets within brackets, and
+quite a lot of terms.
 
 \begin{exercise}
   Prove Eq.~\eqref{eq:second-order-psi}
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise}\label{exercise:pt-higher}
   Derive the fourth and fift order perturbation theory corrections to
-  the energy.
+  the energy from Theorem~\ref{thm:rspt}. Next, verify that the
+  bracketing technique gives the correct answer.
 \end{exercise}
 
 \subsection{A two-state example}
@@ -6167,7 +6225,7 @@ computer algebra)
 \begin{equation}
   e_-(\lambda) = -1 - \frac{1}{2}(\lambda\epsilon)^2 +
   \frac{1}{8}(\lambda\epsilon)^4 - \frac{1}{26}(\lambda\epsilon)^6  +
-  \frac{5}{128} (\lambda\epsilon)^8 + O(\lambda^{10}).
+  \frac{5}{128} (\lambda\epsilon)^8 + O(\lambda^{10}). \label{eq:twostate-taylor}
 \end{equation}
 
 A natural question arises: does the series \emph{converge}? Does it
@@ -6225,12 +6283,200 @@ terms may still give a good approximation.
 %Generalized Wick's Theorem
 
 
+We now consider the perturbation series of the two-state problem
+explicitely. We write $\ket{0}$ for the unperturbed ground state, and
+$\ket{1}$ for the unperturbed excited state. We obtain
+\begin{equation}
+  \hat{H}_0 = \ket{0}\bra{0} - \ket{1}\bra{1}, \quad \hat{V} =
+  \epsilon(\ket{0}\bra{1} + \ket{1}\bra{0}).
+\end{equation}
+We alsso have
+\begin{equation}
+  \hat{R} = -\frac{1}{2}\ket{2}\bra{2}.
+\end{equation}
+Perturbation terms for the energy:
+\begin{equation}
+  E^{(1)} = \braket{0|\hat{V}|0} = 0.
+\end{equation}
+\begin{equation}
+  E^{(2)} = \braket{0|\hat{V}\hat{R}\hat{V}|0} =
+  -\frac{1}{2}\braket{0|\hat{V}|1}\braket{1|\hat{V}|0} = -\frac{1}{2}\epsilon^2.
+\end{equation}
+For the higher order terms, we note that $\hat{R}\hat{V}\hat{R} = 0$.
+The third-order energy:
+\begin{equation}
+  E^{(3)} = \braket{0|\hat{V}\hat{R}\hat{V}\hat{R}\hat{V}|0} -
+  \braket{0|\hat{V}|0}\braket{0|\hat{V}\hat{R}^2\hat{V}|0} = 0.
+\end{equation}
+
+\begin{exercise}
+  Prove that Use $\hat{R}\hat{V}\hat{R}=0$.
+  Compute $E^{(n)}$, $n=4,5,6$, for the two-state model, continuing
+  the above calculations. Use the bracketing technique to derive the
+  terms. Verify that your calculations match the terms in the Taylor
+  expansion~\ref{eq:twostate-taylor}.
+\end{exercise}
 
 
-\subsection{M{\o}ller--Plesset perturbation theory (MPPT)}
-\label{sec:mppt}
+\subsection{Manybody Perturbation Theory (MBPT)}
 
-Hartree--Fock + PT.
+We now use nondegenerate RSPT, and apply it to a manybody
+Hamiltonian. Thus, manybody Rayleigh-Schr\"odinger perturbation theory
+for nondegenerate states. 
+
+In most cases, one has a partitioning $\hat{H} = \hat{K}
++ \hat{L}$, where $\hat{K}$ is a onebody operator (say, $\hat{H}_0$ or
+$\hat{F}$, the Fock operator), and where $\hat{L} = \hat{H} - \hat{K}$
+may be a two plus onebody operator. Thus,
+\begin{align}
+  \hat{H} &= \hat{K} + \hat{L}, \\
+  \hat{K} &= \sum_{i=1}^N \hat{k}(i), \\
+  \hat{L} &= \sum_{i=1}^N \hat{\ell}^{(1)}(i) + \sum_{i<j}^N \hat{\ell}^{(2)}(i,j).
+\end{align}
+We take $\hat{K}$ to be the zero-order Hamiltonian: we assume that
+$\hat{k}$ has been diagonalized, giving a complete orthonormal set of
+single-particle functions,
+\begin{equation}
+  \hat{k} \phi_p(x) = \kappa_p \phi_p(x).
+\end{equation}
+We introduce a set of creation operators $c^\dag_p$ for these
+functions, and obtain
+\begin{align}
+  \hat{K} &= \sum_p \kappa_p c^\dag_p c_p \\
+  \hat{L} &= \sum_{pq} \braket{\phi_p|\hat{\ell}^{(1)}|\phi_q}
+  c^\dag_p c_q + \frac{1}{4}\sum_{pqrs}
+  \braket{\phi_p\phi_q|\hat{\ell}^{(2)}|\phi_r\phi_s}_\text{AS}
+  c^\dag_p c^\dag_q c_s c_r.
+\end{align}
+We are considering RSPT for the ground-state wavefunction
+$\ket{\Psi}$. The corresponding unperturbed ground-state is
+$\ket{\Phi} = c^\dag_1\cdots c^\dag_N\ket{-}$, the ground-state of
+$\hat{K}$. The unperturbed energy is
+\begin{equation}
+  \epsilon = \braket{\Phi|\hat{K}|\Phi} = \sum_{i=1}^N \kappa_i.
+\end{equation}
+
+Let us introduce quasiparticle operators, and write $\ket{\Phi_X}$
+for an arbitrary excited Slater determinant. Thus $\ket{\Phi_X}$ is a
+Slater determinant with 1 particle-hole pair, 2 particle-hole pairs,
+etc. We write $\# X$ for the number of particle-hole pairs in
+$\ket{\Phi_X}$. Thus, the whole complete Slater determinant basis can
+be constructed:
+\begin{equation}
+  \ket{\Phi_X} = b^\dag_{a_1} b^\dag_{i_1} \cdots b^\dag_{a_{\# X}}
+  b^\dag_{i_{\# X}} \ket{\Phi}.
+\end{equation}
+For the projector $\hat{Q}$, we get
+\begin{equation}
+  \hat{Q} =\sum_X \ket{\Phi_X}\bra{\Phi_X}.
+\end{equation}
+Note that the reference $\ket{\Phi}$ is excluded from this sum.
+The unperturbed energies are
+\begin{equation}
+  \epsilon_X = \braket{\Phi_X|\hat{K}|\Phi_X} = \sum_{i=1}^N \kappa_i + \sum_{j=1}^{\# X}
+  (\kappa_{a_j} - \kappa_{i_j}),
+\end{equation}
+and it is a useful exercise to verify this.
+We get for the resolvent
+\begin{equation}
+  \hat{R} = \sum_X \frac{\ket{\Phi_X}\bra{\Phi_X}}{\Delta \epsilon_X} ,
+\end{equation}
+where we have defined
+\begin{equation}
+\Delta \epsilon_X \equiv \epsilon - \epsilon_X = {\sum_{j=1}^{\# X}
+    (\kappa_{i_j} - \kappa_{a_j})}.
+\end{equation}
+
+We here remark that if $\hat{k}$ has degenerate eigenvalues, we will 
+end up with a zero denominator for some $X$. Hence, the assumption of
+non-degeneracy. In fact, it is not enough to require $\hat{k}$ to have
+nodegenerate eigenvalues -- we must require that $\Delta \epsilon_X
+\neq 0$ for all $X$. This is a stronger requirement.
+
+Let us consider RSPT up to second order. Recall first the
+Slater--Condon rules:
+\begin{align}
+  \braket{\Phi_i^a|\hat{L}^{(1)}|\Phi} &=
+  \braket{\phi_a|\hat{\ell}^{(1)}|\phi_i} \\
+  \braket{\Phi_i^a|\hat{L}^{(2)}|\Phi} &=
+  \sum_j \braket{\phi_j\phi_a|\hat{\ell}^{(2)}|\phi_j\phi_i}_\text{AS} \\
+  \braket{\Phi_{ij}^{ab}|\hat{L}^{(2)}|\Phi} &=
+  \braket{\phi_a\phi_b|\hat{\ell}^{(2)}|\phi_i\phi_j}_\text{AS}.
+\end{align}
+All other matrix elements involving $\hat{L}$ and $\ket{\Phi}$
+vanish. We now obtain
+\begin{equation}
+  E^{(1)} = \braket{\Phi|\hat{L}|\Phi} = \sum_i
+  \braket{\phi_i|\hat{\ell}^{(1)}|\phi_i} + \frac{1}{2}\sum_{ij} \braket{\phi_i\phi_j|\hat{\ell}^{(2)}|\phi_i\phi_j}_\text{AS}.
+\end{equation}
+\begin{equation}
+  E^{(2)} = \braket{\Phi|\hat{L}\hat{R}\hat{L}|\Phi} = \sum_X
+  \frac{|\braket{\Phi_X|\hat{L}|\Phi}|^2}{\Delta \epsilon_X}.
+\end{equation}
+Since $\hat{L}$ is at most a two-body operator, this series truncates
+at $\#X = 2$,
+\begin{equation}
+  E^{(2)} = \sum_{ia}
+  \frac{|\braket{\Phi_i^a|\hat{L}|\Phi}|^2}{\kappa_i - \kappa_a} +
+  \frac{1}{4}\sum_{ijab}
+  \frac{|\braket{\Phi_{ij}^{ab}|\hat{L}^{(2)}|\Phi}|^2}{\kappa_i +
+    \kappa_j - \kappa_a - \kappa_b}.\label{eq:mbpt2}
+\end{equation}
+The prefactor comes from over-counting the double excitations. We note
+that only the two-body part of $\hat{L}$ contributes in the second sum
+due to the Slater--Condon rules.
+
+Higher-order corrections quickly become more complicated. We shall
+see, that using the \emph{Hamiltonian on normal-order form} will
+simplify matters a lot. Moreover, in Møller--Plesset perturbation
+theory, where we use $\hat{K} = \hat{F}$, the Fock operator, we get
+even more simplifications due to Brillouin's Theorem.
+
+\begin{exercise}
+  Write oute $E^{(3)}$ in the same fashion as
+  Eq.~\eqref{eq:mbpt2}.
+ % Show that one obtains:
+ %  \begin{align}
+ %    E^{(3)} = \sum_{iji'a'}
+ %    \frac{\braket{\Phi|\hat{L}|\Phi_i^a}\braket{\Phi_i^a|\hat{L}|\Phi_{i'}^{a'}}\braket{\Phi_{i'}^{a'}|\hat{L}|\Phi}}{(\kappa_i-\kappa_a)(\kappa_{i'}-\kappa_{a'})}
+ % + \frac{1}{4}\sum_{i'a'}\sum_{ijab} 
+ %    + \sum_{XY} \frac{1}{\Delta \epsilon_X \Delta \epsilon_Y} \bra{\Phi} \hat{L} \ket{\Phi_X}\bra{\Phi_X} \hat{L}
+ %    \ket{\Phi_Y}\bra{\Phi_Y} \hat{L}\ket{\Phi} -
+ %    E^{(1)}\left(\sum_{ia}
+ %  \frac{|\braket{\Phi_i^a|\hat{L}|\Phi}|^2}{(\epsilon_i - \epsilon_a)^2} +
+ %  \frac{1}{4}\sum_{ijab}
+ %  \frac{|\braket{\Phi_{ij}^{ab}|\hat{L}^{(2)}|\Phi}|^2}{(\epsilon_i +
+ %    \epsilon_j - \epsilon_a - \epsilon_b)^2} \right)
+ %  \end{align}
+\end{exercise}
+
+
+
+% \subsection{M{\o}ller--Plesset perturbation theory (MPPT)}
+% \label{sec:mppt}
+
+% The special case of the Hartree--Fock partitioning of the Hamiltonian
+% is referred to as \emph{Møller--Plesset perturbation theory}
+% (MPPT). The $n$-th order MPPT is often referred to as MP$n$.
+
+% Writing
+% \begin{equation}
+%   \hat{H} = \hat{F} + \hat{U},
+% \end{equation}
+% where $\hat{F}$ is the Fock operator and $\hat{U}$ is the fluctiation
+% potential, and setting $\hat{K} = \hat{F}$, $\hat{L} = \hat{U}$ in
+% RSPT for the ground state, we notice immediately that in
+% Eq.~\eqref{eq:mbpt2}, the singles-term vanishes identically,
+% \begin{equation}
+%   \braket{\Phi_i^a|\hat{U}|\Phi} = \braket{\Phi_i^a|\hat{H} -
+%     \hat{F}|\Phi} = - \braket{\phi_a|\hat{F}|\phi_i} = 0,
+% \end{equation}
+% assuming that the single-particle functions solve the canonical HF
+% equation~\eqref{eq:hf-can}. Moreover,
+% \begin{equation}
+%   E^{(1)} = \braket{\Phi|\hat{H}|\Phi} = \frac{1}{2}\sum_{ij}
+%   \braket{\phi_i\phi_j|\hat{U}|\phi_i\phi_j}_\text{AS}.
+% \end{equation}
 
 \chapter{Feynman diagrams for Rayleigh--Schr\"odinger perturbation
   theory}
